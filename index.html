@@ -3,570 +3,583 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hicham Aitsaid • Développeur Web Freelance & Consultant Santé</title>
-  <meta name="description" content="Développeur Web Freelance spécialisé pour Professionnels de Santé, Artisans et E-commerce. Création de sites modernes, dépannage et sécurité." />
+  <title>Hicham Aitsaid — Software Engineer & Health-Tech Consultant</title>
+  <meta name="description" content="Développeur Web & Consultant Santé indépendant. Conception d'applications web modernes, plateformes médicales et sécurisation e-commerce." />
   
-  <!-- Google Fonts -->
+  <!-- Premium Typography (Syne + Plus Jakarta Sans + Space Grotesk) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@500;600;700;800&family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,500&display=swap" rel="stylesheet" />
   
-  <!-- FontAwesome Icons -->
+  <!-- Feather / Lucide Icons via Unicons / FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   
   <link rel="stylesheet" href="style.css" />
 </head>
-<body class="bg-dark text-light">
-
-  <!-- Background Animated Gradient Orbs -->
-  <div class="glow-orb orb-1"></div>
-  <div class="glow-orb orb-2"></div>
-  <div class="glow-orb orb-3"></div>
+<body class="theme-dark">
 
   <!-- ========================================================================= -->
-  <!-- NAVBAR -->
+  <!-- HEADER / MINIMALIST NAV -->
   <!-- ========================================================================= -->
-  <header class="navbar-wrapper">
-    <nav class="navbar glass-card" id="navbar">
-      <a href="#hero" class="brand-logo" id="brand-logo">
-        <span class="logo-badge">HA</span>
-        <span class="logo-text">Hicham <span class="text-gradient">Aitsaid</span></span>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="#hero" class="brand" id="brand-link">
+        <span class="brand-name">Hicham Aitsaid</span>
+        <span class="brand-title">/ Software & Health-Tech</span>
       </a>
 
-      <ul class="nav-links" id="nav-links">
-        <li><a href="#specialites" class="nav-item">Spécialités</a></li>
-        <li><a href="#projets" class="nav-item">Réalisations</a></li>
-        <li><a href="#services" class="nav-item">Services</a></li>
-        <li><a href="#apropos" class="nav-item">À propos</a></li>
-        <li><a href="#contact" class="nav-item nav-contact-link">Contact</a></li>
-      </ul>
+      <nav class="desktop-nav">
+        <a href="#works" class="nav-link"><span>01.</span> Réalisations</a>
+        <a href="#expertise" class="nav-link"><span>02.</span> Approche</a>
+        <a href="#services" class="nav-link"><span>03.</span> Services</a>
+        <a href="#about" class="nav-link"><span>04.</span> Parcours</a>
+      </nav>
 
-      <div class="nav-actions">
-        <a href="https://wa.me/33758018720?text=Bonjour%20Hicham,%20je%20souhaite%20un%20devis%20pour%20mon%20site%20web" target="_blank" rel="noopener" class="btn btn-whatsapp" id="btn-nav-whatsapp" title="Contacter sur WhatsApp">
-          <i class="fa-brands fa-whatsapp"></i>
-          <span>Discuter</span>
-        </a>
-        <a href="#contact" class="btn btn-primary" id="btn-nav-devis">
-          <span>Devis gratuit</span>
+      <div class="header-cta">
+        <div class="status-pill">
+          <span class="pulse-indicator"></span>
+          <span>Dispo Freelance</span>
+        </div>
+        <a href="#contact" class="btn-editorial" id="nav-cta-btn">
+          <span>Me contacter</span>
           <i class="fa-solid fa-arrow-right"></i>
         </a>
-        <button class="mobile-toggle" id="mobile-menu-btn" aria-label="Menu Mobile">
-          <i class="fa-solid fa-bars"></i>
-        </button>
       </div>
-    </nav>
+
+      <button class="menu-toggle" id="menu-toggle-btn" aria-label="Toggle Menu">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
   </header>
 
-  <!-- Mobile Drawer Menu -->
-  <div class="mobile-drawer" id="mobile-drawer">
-    <div class="drawer-header">
-      <span class="brand-logo">Hicham <span class="text-gradient">Aitsaid</span></span>
-      <button class="drawer-close" id="drawer-close-btn"><i class="fa-solid fa-xmark"></i></button>
-    </div>
-    <ul class="drawer-links">
-      <li><a href="#specialites" class="drawer-item">Spécialités</a></li>
-      <li><a href="#projets" class="drawer-item">Réalisations</a></li>
-      <li><a href="#services" class="drawer-item">Services & Tarifs</a></li>
-      <li><a href="#apropos" class="drawer-item">À propos</a></li>
-      <li><a href="#contact" class="drawer-item">Demander un Devis</a></li>
-    </ul>
-    <div class="drawer-footer">
-      <a href="https://wa.me/33758018720" target="_blank" class="btn btn-whatsapp w-full">
-        <i class="fa-brands fa-whatsapp"></i> Échanger sur WhatsApp
-      </a>
+  <!-- Mobile Overlay Menu -->
+  <div class="mobile-nav-overlay" id="mobile-overlay">
+    <div class="mobile-nav-inner">
+      <a href="#works" class="mobile-link"><span>01</span> Réalisations</a>
+      <a href="#expertise" class="mobile-link"><span>02</span> Approche</a>
+      <a href="#services" class="mobile-link"><span>03</span> Services</a>
+      <a href="#about" class="mobile-link"><span>04</span> Parcours</a>
+      <a href="#contact" class="mobile-link"><span>05</span> Contact direct</a>
+      
+      <div class="mobile-contact-foot">
+        <p>contact98hicham@gmail.com</p>
+        <p>+33 7 58 01 87 20 • Paris, France</p>
+      </div>
     </div>
   </div>
 
   <main>
     <!-- ========================================================================= -->
-    <!-- HERO SECTION -->
+    <!-- HERO SECTION (Awwwards Style Editorial) -->
     <!-- ========================================================================= -->
     <section class="hero-section" id="hero">
-      <div class="container hero-container">
+      <div class="container">
         
-        <div class="hero-content">
-          <div class="hero-pill glass-card" id="hero-status-pill">
-            <span class="pulse-dot"></span>
-            <span>Disponible pour nouveaux projets • Freelance</span>
-          </div>
-
-          <h1 class="hero-title">
-            Je conçois des solutions web <span class="text-gradient">rapides, élégantes</span> & sécurisées.
-          </h1>
-
-          <p class="hero-description">
-            Double expertise unique : <b>Ingénieur Informatique Biomédicale</b> & <b>Professionnel de Santé</b>. 
-            J'accompagne les <b>cabinets de santé</b>, <b>artisans</b> et <b>commerçants</b> dans la création, le dépannage et la sécurisation de leurs outils digitaux.
-          </p>
-
-          <div class="hero-buttons">
-            <a href="#projets" class="btn btn-primary btn-lg" id="hero-btn-projets">
-              <i class="fa-solid fa-laptop-code"></i>
-              <span>Explorer mes projets</span>
-            </a>
-            <a href="https://wa.me/33758018720?text=Bonjour%20Hicham,%20je%20visite%20votre%20portfolio" target="_blank" class="btn btn-glass btn-lg" id="hero-btn-whatsapp">
-              <i class="fa-brands fa-whatsapp text-green"></i>
-              <span>WhatsApp Direct</span>
-            </a>
-          </div>
-
-          <!-- Trust Numbers -->
-          <div class="hero-stats glass-card" id="hero-stats">
-            <div class="stat-item">
-              <span class="stat-number">100%</span>
-              <span class="stat-label">Projets livrés avec succès</span>
-            </div>
-            <div class="stat-divider"></div>
-            <div class="stat-item">
-              <span class="stat-number">24/48h</span>
-              <span class="stat-label">Dépannage d'urgence</span>
-            </div>
-            <div class="stat-divider"></div>
-            <div class="stat-item">
-              <span class="stat-number">Santé & Web</span>
-              <span class="stat-label">Double compétence métier</span>
-            </div>
-          </div>
+        <div class="hero-top-meta">
+          <span class="meta-tag">PARIS & REMOTE</span>
+          <span class="meta-separator">•</span>
+          <span class="meta-tag">MASTER SORBONNE & EX-INFIRMIER CHU</span>
+          <span class="meta-separator">•</span>
+          <span class="meta-tag">DISPONIBLE Q3/Q4 2026</span>
         </div>
 
-        <!-- Hero Visual / Floating Tech Card -->
-        <div class="hero-visual">
-          <div class="code-window glass-card" id="code-card">
-            <div class="window-header">
-              <div class="dots">
-                <span class="dot red"></span>
-                <span class="dot yellow"></span>
-                <span class="dot green"></span>
-              </div>
-              <span class="window-title">hicham-aitsaid.config.ts</span>
-            </div>
-            <div class="window-body font-mono">
-              <p><span class="c-keyword">const</span> <span class="c-var">developer</span> = {</p>
-              <p class="pl-4"><span class="c-prop">nom</span>: <span class="c-str">'Hicham AITSAID'</span>,</p>
-              <p class="pl-4"><span class="c-prop">statut</span>: <span class="c-str">'Freelance EI (SIREN 107 548 406)'</span>,</p>
-              <p class="pl-4"><span class="c-prop">formation</span>: <span class="c-str">'Master 2 Informatique Biomédicale (Sorbonne)'</span>,</p>
-              <p class="pl-4"><span class="c-prop">expertises</span>: [</p>
-              <p class="pl-8"><span class="c-str">'🩺 Santé & Cabinets Médicaux'</span>,</p>
-              <p class="pl-8"><span class="c-str">'🛍️ E-commerce & Artisans'</span>,</p>
-              <p class="pl-8"><span class="c-str">'🛡️ Dépannage & Sécurité Web'</span></p>
-              <p class="pl-4">],</p>
-              <p class="pl-4"><span class="c-prop">disponibilité</span>: <span class="c-bool">true</span>,</p>
-              <p class="pl-4"><span class="c-func">contacter</span>: () => <span class="c-str">'contact98hicham@gmail.com'</span></p>
-              <p>};</p>
-            </div>
-            
-            <div class="floating-badge badge-1">
-              <i class="fa-brands fa-react text-cyan"></i> React 19 & Next.js
-            </div>
-            <div class="floating-badge badge-2">
-              <i class="fa-solid fa-shield-halved text-green"></i> Sécurité PrestaShop
-            </div>
+        <h1 class="hero-statement">
+          Conception de plateformes web & applications critiques avec la rigueur du monde <em class="serif-italic">médical</em>.
+        </h1>
+
+        <div class="hero-bottom-grid">
+          <div class="hero-bio">
+            <p>
+              Je combine une formation d'ingénieur en <b>Informatique Biomédicale</b> (Sorbonne) et une expérience clinique d'<b>infirmier</b>. J'accompagne les professionnels de santé, artisans et entreprises dans le développement de produits web performants, sécurisés et sans friction.
+            </p>
+          </div>
+
+          <div class="hero-actions">
+            <a href="https://wa.me/33758018720?text=Bonjour%20Hicham,%20je%20souhaite%20échanger%20sur%20un%20projet" target="_blank" rel="noopener" class="btn-pill btn-primary-pill" id="hero-wa-btn">
+              <i class="fa-brands fa-whatsapp"></i>
+              <span>Échanger sur WhatsApp</span>
+            </a>
+            <a href="#works" class="btn-pill btn-secondary-pill" id="hero-works-btn">
+              <span>Explorer les cas clients</span>
+              <i class="fa-solid fa-arrow-down"></i>
+            </a>
           </div>
         </div>
 
       </div>
     </section>
 
-    <!-- ========================================================================= -->
-    <!-- SPÉCIALITÉS / 2 PÔLES D'EXPERTISE -->
-    <!-- ========================================================================= -->
-    <section class="section-container" id="specialites">
-      <div class="container">
-        
-        <div class="section-header text-center">
-          <span class="section-subtitle">PÔLES D'EXPERTISE</span>
-          <h2 class="section-title">Des solutions adaptées à <span class="text-gradient">votre secteur</span></h2>
-          <p class="section-desc">Une compréhension profonde de vos contraintes pour des résultats concrets.</p>
-        </div>
-
-        <div class="grid-2">
-          
-          <!-- Pôle 1 : Santé -->
-          <div class="expertise-card glass-card" id="card-sante">
-            <div class="card-icon-wrap icon-sante">
-              <i class="fa-solid fa-user-doctor"></i>
-            </div>
-            <span class="badge-tag tag-sante">Secteur Médical & Paramédical</span>
-            <h3 class="card-title">Professionnels de Santé & Cabinets</h3>
-            <p class="card-text">
-              Ancien infirmier diplômé et titulaire d'un Master en informatique médicale, je conçois des plateformes conformes, claires et rassurantes pour vos patients.
-            </p>
-            <ul class="feature-list">
-              <li><i class="fa-solid fa-check text-cyan"></i> Prise de rendez-vous en ligne & formulaire intelligent</li>
-              <li><i class="fa-solid fa-check text-cyan"></i> Intégration contact instantané WhatsApp & Téléphone</li>
-              <li><i class="fa-solid fa-check text-cyan"></i> Support multilingue (Français, Anglais, Arabe / RTL)</li>
-              <li><i class="fa-solid fa-check text-cyan"></i> Visibilité Google Maps & référencement local (SEO)</li>
-            </ul>
-            <div class="card-footer-action">
-              <a href="#projets" class="link-arrow">Voir le projet Allo Infirmier <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
-          </div>
-
-          <!-- Pôle 2 : E-commerce & Artisans -->
-          <div class="expertise-card glass-card" id="card-artisan">
-            <div class="card-icon-wrap icon-artisan">
-              <i class="fa-solid fa-gem"></i>
-            </div>
-            <span class="badge-tag tag-artisan">Artisans, Créateurs & E-Commerce</span>
-            <h3 class="card-title">Créateurs & Boutiques en Ligne</h3>
-            <p class="card-text">
-              Pour les créateurs et artisans qui font des salons, des marchés ou vendent en ligne, je conçois des vitrines élégantes et débloque vos boutiques existantes.
-            </p>
-            <ul class="feature-list">
-              <li><i class="fa-solid fa-check text-gold"></i> Dépannage d'urgence PrestaShop, Shopify & WordPress</li>
-              <li><i class="fa-solid fa-check text-gold"></i> Éradication de malwares, virus et failles de sécurité</li>
-              <li><i class="fa-solid fa-check text-gold"></i> Galeries photos haute définition & catalogue produits</li>
-              <li><i class="fa-solid fa-check text-gold"></i> Paiements sécurisés (Carte, Stripe, PayPal)</li>
-            </ul>
-            <div class="card-footer-action">
-              <a href="#projets" class="link-arrow">Voir le cas Sabina Nougarède <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
-          </div>
-
-        </div>
-
+    <!-- Marquee Ticker -->
+    <div class="marquee-bar">
+      <div class="marquee-track">
+        <span>REACT 19</span><span class="star">✦</span>
+        <span>SUPABASE & POSTGRESQL</span><span class="star">✦</span>
+        <span>HEALTHCARE DATA & DICOM</span><span class="star">✦</span>
+        <span>PRESTASHOP & E-COMMERCE</span><span class="star">✦</span>
+        <span>CYBERSÉCURITÉ & AUDIT</span><span class="star">✦</span>
+        <span>PYTHON & FASTAPI</span><span class="star">✦</span>
+        <span>REACT 19</span><span class="star">✦</span>
+        <span>SUPABASE & POSTGRESQL</span><span class="star">✦</span>
+        <span>HEALTHCARE DATA & DICOM</span><span class="star">✦</span>
+        <span>PRESTASHOP & E-COMMERCE</span><span class="star">✦</span>
       </div>
-    </section>
+    </div>
 
     <!-- ========================================================================= -->
-    <!-- RÉALISATIONS PHARES / PROJETS -->
+    <!-- FEATURED WORK / ÉTUDES DE CAS -->
     <!-- ========================================================================= -->
-    <section class="section-container bg-subtle" id="projets">
+    <section class="section-editorial" id="works">
       <div class="container">
         
-        <div class="section-header text-center">
-          <span class="section-subtitle">RÉALISATIONS RÉCENTES</span>
-          <h2 class="section-title">Études de cas & <span class="text-gradient">Projets réels</span></h2>
-          <p class="section-desc">Des résultats mesurables, testés et en production.</p>
+        <div class="section-label-row">
+          <span class="num-label">/ 01</span>
+          <span class="title-label">PROJETS SÉLECTIONNÉS & ÉTUDES DE CAS</span>
         </div>
 
-        <div class="projects-grid">
+        <div class="case-studies-list">
           
-          <!-- Projet 1 : Allo Infirmier -->
-          <div class="project-card glass-card" id="project-alloinfirmier">
-            <div class="project-header-bar">
-              <div class="project-tags">
-                <span class="tech-tag">React 19</span>
-                <span class="tech-tag">Supabase</span>
-                <span class="tech-tag">Vercel</span>
-                <span class="tech-tag">i18n Trilingue</span>
-              </div>
-              <span class="status-badge live-badge"><span class="dot-live"></span> En Ligne</span>
-            </div>
-
-            <div class="project-body">
-              <div class="project-icon-large">
-                <i class="fa-solid fa-house-medical"></i>
-              </div>
-              <h3 class="project-title">Allo Infirmier — Plateforme de Soins à Domicile</h3>
-              <p class="project-desc">
-                Application web moderne trilingue (Français, Anglais, Arabe avec mise en page RTL) permettant la coordination des soins infirmiers et la réservation instantanée de soins à domicile avec stockage Supabase et alertes par email/WhatsApp.
-              </p>
-              
-              <div class="project-highlights">
-                <div class="highlight-item">
-                  <i class="fa-solid fa-bolt text-cyan"></i>
-                  <span>Chargement instantané (Vite + SPA)</span>
+          <!-- Case Study 01 : Allo Infirmier -->
+          <article class="case-item" id="case-alloinfirmier">
+            <div class="case-header">
+              <div class="case-num">01</div>
+              <div class="case-info">
+                <div class="case-meta-tags">
+                  <span class="tag">Healthcare App</span>
+                  <span class="tag">React 19 + Supabase</span>
+                  <span class="tag">Trilingual i18n</span>
+                  <span class="tag-live">● Live in production</span>
                 </div>
-                <div class="highlight-item">
-                  <i class="fa-solid fa-moon text-indigo"></i>
-                  <span>Mode Sombre / Clair persistant</span>
-                </div>
-                <div class="highlight-item">
-                  <i class="fa-solid fa-globe text-green"></i>
-                  <span>Support Arabe RTL complet</span>
-                </div>
+                <h2 class="case-title">Allo Infirmier — Plateforme de Soins à Domicile</h2>
               </div>
-
-              <div class="project-actions">
-                <a href="https://alloinfimier.vercel.app" target="_blank" rel="noopener" class="btn btn-primary" id="btn-view-alloinfirmier">
+              <div class="case-link-btn">
+                <a href="https://alloinfimier.vercel.app" target="_blank" rel="noopener" class="icon-circle-btn" aria-label="Visiter Allo Infirmier">
                   <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                  <span>Visiter la plateforme live</span>
                 </a>
+              </div>
+            </div>
+
+            <div class="case-content-grid">
+              <div class="case-column">
+                <span class="sub-label">LE PROBLÈME & CONTEXTE</span>
+                <p>
+                  Les professionnels de santé à domicile perdent un temps précieux à coordonner les rendez-vous par appels fragmentés. Le besoin : une interface accessible en 3 langues (FR, EN, AR avec mise en page RTL native), fluide sur mobile pour les patients et connectée directement à WhatsApp.
+                </p>
+              </div>
+
+              <div class="case-column">
+                <span class="sub-label">LA SOLUTION TECHNIQUE</span>
+                <p>
+                  Architecture React 19 Single-Page ultra-légère déployée sur Vercel Edge. Base de données relationnelle Supabase (PostgreSQL), envoi d'alertes instantanées par email et passerelle de réservation en un clic vers WhatsApp.
+                </p>
+              </div>
+
+              <div class="case-column case-metrics-box">
+                <span class="sub-label">IMPACT CLÉ</span>
+                <div class="metric-num">&lt; 0.6s</div>
+                <div class="metric-desc">Temps de chargement moyen mobile</div>
+                <div class="case-bottom-action">
+                  <a href="https://alloinfimier.vercel.app" target="_blank" rel="noopener" class="text-link">
+                    Ouvrir la démo live <i class="fa-solid fa-arrow-right"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Case Study 02 : Sabina Nougarède -->
+          <article class="case-item" id="case-sabinanougarede">
+            <div class="case-header">
+              <div class="case-num">02</div>
+              <div class="case-info">
+                <div class="case-meta-tags">
+                  <span class="tag">E-Commerce & Security</span>
+                  <span class="tag">PrestaShop 1.7</span>
+                  <span class="tag">PHP / MySQL</span>
+                  <span class="tag-success">✓ 100% Résolu</span>
+                </div>
+                <h2 class="case-title">Sabina Nougarède — Sauvetage & Sécurisation Back-Office</h2>
+              </div>
+              <div class="case-link-btn">
+                <a href="https://sabinanougarede.com" target="_blank" rel="noopener" class="icon-circle-btn" aria-label="Visiter Sabina Nougarede">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+              </div>
+            </div>
+
+            <div class="case-content-grid">
+              <div class="case-column">
+                <span class="sub-label">LE PROBLÈME & CONTEXTE</span>
+                <p>
+                  Panne bloquante sur la boutique d'une créatrice de mode/bijoux : boucle infinie d'authentification sur le panneau d'administration. Gestion des commandes et accès au catalogue totalement impossibles.
+                </p>
+              </div>
+
+              <div class="case-column">
+                <span class="sub-label">INVESTIGATION & DÉSINFECTION</span>
+                <p>
+                  Détection d'un script d'exfiltration injecté (malware) ayant corrompu le cycle de vie de session PrestaShop 1.7.8 (<code>EmployeeSession</code>). Éradication du code pirate, alignement des en-têtes SSL proxy OVH et purge du cache Symfony.
+                </p>
+              </div>
+
+              <div class="case-column case-metrics-box">
+                <span class="sub-label">RÉSULTAT</span>
+                <div class="metric-num">HTTP 200</div>
+                <div class="metric-desc">Accès restauré & serveur sécurisé</div>
+                <div class="case-bottom-action">
+                  <a href="https://sabinanougarede.com" target="_blank" rel="noopener" class="text-link">
+                    Visiter le site client <i class="fa-solid fa-arrow-right"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Case Study 03 : Imagerie Médicale & Recherche -->
+          <article class="case-item" id="case-biomed">
+            <div class="case-header">
+              <div class="case-num">03</div>
+              <div class="case-info">
+                <div class="case-meta-tags">
+                  <span class="tag">Healthcare Big Data</span>
+                  <span class="tag">Python & SQL</span>
+                  <span class="tag">OHIF Viewer / DICOM</span>
+                  <span class="tag">Centre Henri-Becquerel</span>
+                </div>
+                <h2 class="case-title">Plateforme de Données & Imagerie Clinique</h2>
+              </div>
+            </div>
+
+            <div class="case-content-grid">
+              <div class="case-column">
+                <span class="sub-label">CONTEXTE HOSPITALIER</span>
+                <p>
+                  Développement d'outils d'extraction, anonymisation et visualisation de cas cliniques en oncologie médicale. Intégration de la visionneuse standardisée OHIF pour les images DICOM.
+                </p>
+              </div>
+
+              <div class="case-column">
+                <span class="sub-label">INGÉNIERIE DE DONNÉES</span>
+                <p>
+                  Pipelines de standardisation OMOP CDM, requêtage analytique BigQuery (MIMIC-III) et NLP biomédical (modèles BERT) pour l'analyse automatisée de comptes-rendus.
+                </p>
+              </div>
+
+              <div class="case-column case-metrics-box">
+                <span class="sub-label">EXPERTISE</span>
+                <div class="metric-num">DICOM/FHIR</div>
+                <div class="metric-desc">Interopérabilité hospitalière</div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- PHILOSOPHIE / APPROCHE (Bento Minimaliste) -->
+    <!-- ========================================================================= -->
+    <section class="section-editorial bg-darker" id="expertise">
+      <div class="container">
+        
+        <div class="section-label-row">
+          <span class="num-label">/ 02</span>
+          <span class="title-label">PHILOSOPHIE D'INGÉNIERIE & MÉTHODE</span>
+        </div>
+
+        <div class="bento-grid">
+          
+          <div class="bento-card bento-wide">
+            <span class="bento-tag">COMPRÉHENSION MÉTIER</span>
+            <h3 class="bento-title">Parler votre langage avant d'écrire la moindre ligne de code.</h3>
+            <p class="bento-text">
+              Que vous soyez infirmier libéral avec des contraintes de tournée, ou artisan avec des impératifs d'exposition sur des stands, je comprends vos réalités opérationnelles. Pas de jargon nébuleux : uniquement des outils adaptés qui vous font gagner du temps.
+            </p>
+          </div>
+
+          <div class="bento-card">
+            <span class="bento-tag">SIMPLICITÉ & VITESSE</span>
+            <h3 class="bento-title">Zéro surplus, 100% efficacité</h3>
+            <p class="bento-text">
+              Des architectures modernes (React, Supabase, API serverless) qui se chargent instantanément sur n'importe quel smartphone, même en 3G.
+            </p>
+          </div>
+
+          <div class="bento-card">
+            <span class="bento-tag">SÉCURITÉ & RIGUEUR</span>
+            <h3 class="bento-title">Sécurité par conception</h3>
+            <p class="bento-text">
+              Habitué aux environnements hospitaliers exigeants, j'applique les meilleurs standards de sécurité : SSL, sanitization des données, sessions protégées et sauvegardes fiables.
+            </p>
+          </div>
+
+          <div class="bento-card bento-wide bento-highlight">
+            <div class="bento-flex">
+              <div>
+                <span class="bento-tag">STRUCTURE LÉGALE & FACTURATION</span>
+                <h3 class="bento-title">Entreprise déclarée & Facturation transparente</h3>
+                <p class="bento-text">
+                  Interventions cadrées par devis préalable et facture officielle (EI Hicham AITSAID, SIREN 107 548 406). Paiement sécurisé par virement bancaire (RIB BNP Paribas).
+                </p>
+              </div>
+              <div class="bento-stat">
+                <span class="bento-big-num">24h</span>
+                <span class="bento-stat-sub">Délai moyen de prise en charge</span>
               </div>
             </div>
           </div>
 
-          <!-- Projet 2 : Sabina Nougarède -->
-          <div class="project-card glass-card" id="project-sabinanougarede">
-            <div class="project-header-bar">
-              <div class="project-tags">
-                <span class="tech-tag">PrestaShop 1.7</span>
-                <span class="tech-tag">Cybersécurité</span>
-                <span class="tech-tag">PHP / MySQL</span>
-                <span class="tech-tag">OVH Cloud</span>
-              </div>
-              <span class="status-badge success-badge"><i class="fa-solid fa-check"></i> Débloqué & Sécurisé</span>
-            </div>
+        </div>
 
-            <div class="project-body">
-              <div class="project-icon-large icon-gold">
-                <i class="fa-solid fa-store"></i>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SERVICES & MODÈLES D'ENGAGEMENT -->
+    <!-- ========================================================================= -->
+    <section class="section-editorial" id="services">
+      <div class="container">
+        
+        <div class="section-label-row">
+          <span class="num-label">/ 03</span>
+          <span class="title-label">SERVICES & FORFAITS D'INTERVENTION</span>
+        </div>
+
+        <div class="services-table-wrapper">
+          
+          <div class="service-row">
+            <div class="srv-col-main">
+              <span class="srv-num">01</span>
+              <div>
+                <h3 class="srv-title">Dépannage d'Urgence & Sécurité Web</h3>
+                <p class="srv-desc">Diagnostic de panne, déblocage de connexion/back-office, éradication de malwares et correction de conflits SSL/DNS.</p>
               </div>
-              <h3 class="project-title">Sabina Nougarède — E-commerce & Sécurité</h3>
-              <p class="project-desc">
-                Intervention d'urgence sur la boutique PrestaShop d'une créatrice de mode et bijoux. Diagnostic en profondeur d'une boucle infinie de connexion, éradication d'un malware espion injecté et rétablissement complet des sessions d'administration.
+            </div>
+            <div class="srv-col-deliverables">
+              <span>Résolution rapide &lt; 24h</span>
+              <span>Rapport technique complet</span>
+            </div>
+            <div class="srv-col-price">
+              <span class="srv-price-label">Forfait à partir de</span>
+              <span class="srv-price-val">100 €</span>
+            </div>
+            <div class="srv-col-action">
+              <a href="https://wa.me/33758018720?text=Bonjour%20Hicham,%20j'ai%20besoin%20d'un%20dépannage" target="_blank" class="btn-text">Demander un dépannage →</a>
+            </div>
+          </div>
+
+          <div class="service-row service-highlight">
+            <div class="srv-col-main">
+              <span class="srv-num">02</span>
+              <div>
+                <div class="badge-rec">Populaire</div>
+                <h3 class="srv-title">Site Vitrine Professionnel Clé en Main</h3>
+                <p class="srv-desc">Pour professionnels de santé libéraux, artisans, créateurs et indépendants. Design sur-mesure, mobile-first et passerelle WhatsApp.</p>
+              </div>
+            </div>
+            <div class="srv-col-deliverables">
+              <span>Prise de RDV / Devis</span>
+              <span>SEO local & Google Maps</span>
+              <span>Hébergement & SSL inclus</span>
+            </div>
+            <div class="srv-col-price">
+              <span class="srv-price-label">Forfait à partir de</span>
+              <span class="srv-price-val">450 €</span>
+            </div>
+            <div class="srv-col-action">
+              <a href="#contact" class="btn-editorial">Lancer mon projet →</a>
+            </div>
+          </div>
+
+          <div class="service-row">
+            <div class="srv-col-main">
+              <span class="srv-num">03</span>
+              <div>
+                <h3 class="srv-title">Applications Métier & E-Commerce</h3>
+                <p class="srv-desc">Boutique en ligne (PrestaShop, Stripe), applications interactives avec base de données (React / Supabase) ou solutions multilingues.</p>
+              </div>
+            </div>
+            <div class="srv-col-deliverables">
+              <span>Architecture sur-mesure</span>
+              <span>Paiement sécurisé</span>
+              <span>Base de données dédiée</span>
+            </div>
+            <div class="srv-col-price">
+              <span class="srv-price-label">Tarification</span>
+              <span class="srv-price-val">Sur Devis</span>
+            </div>
+            <div class="srv-col-action">
+              <a href="#contact" class="btn-text">Étudier mon besoin →</a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- PARCOURS & BIO (Editorial Bio) -->
+    <!-- ========================================================================= -->
+    <section class="section-editorial bg-darker" id="about">
+      <div class="container">
+        
+        <div class="section-label-row">
+          <span class="num-label">/ 04</span>
+          <span class="title-label">PARCOURS & FONDATIONS TECHNIQUES</span>
+        </div>
+
+        <div class="about-editorial-grid">
+          <div class="about-story">
+            <h2 class="about-headline">
+              De la salle de soins aux architectures distribuées.
+            </h2>
+            <div class="story-paragraphs">
+              <p>
+                Mon parcours a débuté au chevet des patients en tant qu'<b>infirmier en réanimation et soins intensifs</b> au CHU de Rabat. Cette expérience m'a appris la rigueur absolue, la gestion de l'urgence et l'importance critique de systèmes d'information fiables.
               </p>
-              
-              <div class="project-highlights">
-                <div class="highlight-item">
-                  <i class="fa-solid fa-shield-virus text-gold"></i>
-                  <span>Suppression de backdoor d'exfiltration</span>
-                </div>
-                <div class="highlight-item">
-                  <i class="fa-solid fa-key text-cyan"></i>
-                  <span>Restauration du cycle de session 1.7.8</span>
-                </div>
-                <div class="highlight-item">
-                  <i class="fa-solid fa-lock text-green"></i>
-                  <span>Alignement SSL reverse-proxy OVH</span>
-                </div>
+              <p>
+                Passionné par la data et la technique, j'ai poursuivi un <b>Master en Informatique Biomédicale à Sorbonne Paris Nord / Université Paris Cité</b>. Aujourd'hui, j'allie cette double culture pour concevoir des applications web robustes, intuitives et adaptées aux exigences des professionnels.
+              </p>
+            </div>
+
+            <div class="timeline-block">
+              <div class="timeline-item">
+                <span class="tl-year">2024 — 2025</span>
+                <span class="tl-role">Master 2 Informatique Biomédicale • Sorbonne Paris Nord</span>
               </div>
-
-              <div class="project-actions">
-                <a href="https://sabinanougarede.com" target="_blank" rel="noopener" class="btn btn-glass" id="btn-view-sabina">
-                  <i class="fa-solid fa-globe"></i>
-                  <span>Voir la boutique en ligne</span>
-                </a>
+              <div class="timeline-item">
+                <span class="tl-year">2025</span>
+                <span class="tl-role">Ingénieur Data & Intégration • Centre Henri-Becquerel</span>
+              </div>
+              <div class="timeline-item">
+                <span class="tl-year">2024</span>
+                <span class="tl-role">Développeur Web & Data • Devoteam</span>
+              </div>
+              <div class="timeline-item">
+                <span class="tl-year">2020 — 2022</span>
+                <span class="tl-role">Infirmier Polyvalent • CHU Rabat</span>
               </div>
             </div>
           </div>
 
+          <div class="about-sidebar">
+            <div class="identity-card">
+              <div class="id-header">
+                <span class="id-name">Hicham AITSAID</span>
+                <span class="id-status">Entrepreneur Individuel (EI)</span>
+              </div>
+              <div class="id-details">
+                <div class="id-line"><span>SIREN</span> <b>107 548 406</b></div>
+                <div class="id-line"><span>SIRET</span> <b>10754840600019</b></div>
+                <div class="id-line"><span>Code APE</span> <b>6202A (Conseil informatique)</b></div>
+                <div class="id-line"><span>Immatriculation</span> <b>INPI Guichet Unique</b></div>
+                <div class="id-line"><span>Localisation</span> <b>Valenton / Paris (94/75)</b></div>
+                <div class="id-line"><span>Régime</span> <b>Franchise en base TVA (Art. 293 B)</b></div>
+              </div>
+            </div>
+
+            <div class="tech-stack-card">
+              <span class="sub-label">STACK & TECHNOLOGIES</span>
+              <div class="tech-tags-cloud">
+                <span>React 19</span>
+                <span>JavaScript (ES6+)</span>
+                <span>TypeScript</span>
+                <span>Python</span>
+                <span>SQL / PostgreSQL</span>
+                <span>Supabase</span>
+                <span>PHP / PrestaShop</span>
+                <span>Vercel / Docker</span>
+                <span>DICOM / HL7 FHIR</span>
+                <span>Linux & Bash</span>
+              </div>
+            </div>
+          </div>
         </div>
 
       </div>
     </section>
 
     <!-- ========================================================================= -->
-    <!-- SERVICES & TARIFS TRANSPARENTS -->
+    <!-- CONTACT SECTION (Refined Minimalist) -->
     <!-- ========================================================================= -->
-    <section class="section-container" id="services">
+    <section class="section-editorial" id="contact">
       <div class="container">
         
-        <div class="section-header text-center">
-          <span class="section-subtitle">SERVICES & TARIFS</span>
-          <h2 class="section-title">Des forfaits clairs, <span class="text-gradient">sans mauvaise surprise</span></h2>
-          <p class="section-desc">Devis transparents et facturation officielle (EI enregistrée INPI).</p>
-        </div>
-
-        <div class="grid-3">
-          
-          <!-- Offre 1 : Dépannage -->
-          <div class="pricing-card glass-card" id="pricing-depannage">
-            <div class="pricing-badge">Intervention Express</div>
-            <h3 class="pricing-title">Dépannage & Sécurité</h3>
-            <p class="pricing-desc">Votre site est en panne, bloqué ou infecté ? Résolution rapide sous 24h.</p>
-            
-            <div class="pricing-price">
-              <span class="price-from">À partir de</span>
-              <span class="price-val">100 €</span>
-              <span class="price-unit">/ forfait</span>
-            </div>
-
-            <ul class="pricing-features">
-              <li><i class="fa-solid fa-circle-check text-cyan"></i> Diagnostic & identification de panne</li>
-              <li><i class="fa-solid fa-circle-check text-cyan"></i> Déblocage accès Back-Office / Login</li>
-              <li><i class="fa-solid fa-circle-check text-cyan"></i> Nettoyage virus, malwares & scripts espions</li>
-              <li><i class="fa-solid fa-circle-check text-cyan"></i> Rapport technique d'intervention détaillé</li>
-            </ul>
-
-            <a href="https://wa.me/33758018720?text=Bonjour%20Hicham,%20j'ai%20besoin%20d'un%20dépannage%20d'urgence" target="_blank" class="btn btn-glass w-full" id="btn-pricing-1">
-              <span>Demander un dépannage</span>
-            </a>
-          </div>
-
-          <!-- Offre 2 : Site Vitrine (Populaire) -->
-          <div class="pricing-card glass-card pricing-featured" id="pricing-vitrine">
-            <div class="pricing-badge badge-popular">Recommandé</div>
-            <h3 class="pricing-title">Site Vitrine Clé en Main</h3>
-            <p class="pricing-desc">Pour cabinets de santé, artisans et commerçants indépendants.</p>
-            
-            <div class="pricing-price">
-              <span class="price-from">À partir de</span>
-              <span class="price-val">450 €</span>
-              <span class="price-unit">/ projet</span>
-            </div>
-
-            <ul class="pricing-features">
-              <li><i class="fa-solid fa-circle-check text-cyan"></i> Design moderne, sur-mesure & responsive</li>
-              <li><i class="fa-solid fa-circle-check text-cyan"></i> Formulaire de réservation / contact direct</li>
-              <li><i class="fa-solid fa-circle-check text-cyan"></i> Bouton WhatsApp & appel en 1 clic</li>
-              <li><i class="fa-solid fa-circle-check text-cyan"></i> Référencement local Google (SEO) inclus</li>
-              <li><i class="fa-solid fa-circle-check text-cyan"></i> Hébergement ultra-rapide & sécurisé (SSL)</li>
-            </ul>
-
-            <a href="#contact" class="btn btn-primary w-full" id="btn-pricing-2">
-              <span>Lancer mon projet</span>
-            </a>
-          </div>
-
-          <!-- Offre 3 : E-Commerce & Web App -->
-          <div class="pricing-card glass-card" id="pricing-custom">
-            <div class="pricing-badge">Sur-Mesure</div>
-            <h3 class="pricing-title">E-Commerce & Web App</h3>
-            <p class="pricing-desc">Vente en ligne complète ou application métier interactive sur-mesure.</p>
-            
-            <div class="pricing-price">
-              <span class="price-from">Sur</span>
-              <span class="price-val">Devis</span>
-              <span class="price-unit">personnalisé</span>
-            </div>
-
-            <ul class="pricing-features">
-              <li><i class="fa-solid fa-circle-check text-cyan"></i> Boutique PrestaShop, Shopify ou React</li>
-              <li><i class="fa-solid fa-circle-check text-cyan"></i> Paiement sécurisé (CB, Stripe, PayPal)</li>
-              <li><i class="fa-solid fa-circle-check text-cyan"></i> Base de données (PostgreSQL, Supabase)</li>
-              <li><i class="fa-solid fa-circle-check text-cyan"></i> Gestion multilingue & multi-devises</li>
-            </ul>
-
-            <a href="#contact" class="btn btn-glass w-full" id="btn-pricing-3">
-              <span>Demander une étude</span>
-            </a>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ========================================================================= -->
-    <!-- À PROPOS DE MOI -->
-    <!-- ========================================================================= -->
-    <section class="section-container bg-subtle" id="apropos">
-      <div class="container">
-        
-        <div class="about-grid">
-          
-          <div class="about-content">
-            <span class="section-subtitle">À PROPOS</span>
-            <h2 class="section-title">Hicham Aitsaid, <span class="text-gradient">Développeur & Consultant</span></h2>
-            
-            <p class="about-text">
-              Diplômé d'un <b>Master en Informatique Biomédicale</b> (Sorbonne Paris Nord / Paris Cité) et <b>ancien infirmier polyvalent</b> (CHU Rabat), je fais le pont entre la rigueur médicale et la puissance du code.
-            </p>
-            <p class="about-text">
-              J'aide aujourd'hui les <b>professionnels de santé</b>, <b>artisans</b> et <b>entrepreneurs</b> à concrétiser leurs projets web sans jargon technique compliqué, avec des délais respectés et un accompagnement humain.
+        <div class="contact-editorial-box">
+          <div class="contact-left">
+            <span class="section-badge">ENTRONS EN CONTACT</span>
+            <h2 class="contact-main-title">
+              Un projet en tête ou une urgence sur votre site ?
+            </h2>
+            <p class="contact-subtitle">
+              Échangeons directement. Je réponds généralement dans les 2 heures avec des conseils clairs et une estimation gratuite.
             </p>
 
-            <div class="skills-chips">
-              <span class="skill-chip"><i class="fa-brands fa-react text-cyan"></i> React / Next.js</span>
-              <span class="skill-chip"><i class="fa-brands fa-js text-yellow"></i> JavaScript (ES6+)</span>
-              <span class="skill-chip"><i class="fa-brands fa-python text-blue"></i> Python / SQL</span>
-              <span class="skill-chip"><i class="fa-brands fa-php text-indigo"></i> PHP / PrestaShop</span>
-              <span class="skill-chip"><i class="fa-solid fa-database text-green"></i> PostgreSQL / Supabase</span>
-              <span class="skill-chip"><i class="fa-solid fa-shield-halved text-red"></i> Sécurité Web & SSL</span>
-            </div>
-          </div>
-
-          <div class="about-legal-card glass-card">
-            <h4 class="legal-card-title"><i class="fa-solid fa-building text-cyan"></i> Informations Légales</h4>
-            <ul class="legal-info-list font-mono">
-              <li><b>Entreprise :</b> Hicham AITSAID (EI)</li>
-              <li><b>SIREN :</b> 107 548 406</li>
-              <li><b>SIRET :</b> 10754840600019</li>
-              <li><b>Code APE :</b> 6202A (Conseil informatique)</li>
-              <li><b>Localisation :</b> Valenton / Paris (Île-de-France)</li>
-              <li><b>TVA :</b> Franchise en base (Art. 293 B du CGI)</li>
-            </ul>
-            <div class="legal-badge">
-              <i class="fa-solid fa-certificate text-green"></i> Entreprise enregistrée au Guichet Unique INPI
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ========================================================================= -->
-    <!-- CONTACT & DEVIS -->
-    <!-- ========================================================================= -->
-    <section class="section-container" id="contact">
-      <div class="container">
-        
-        <div class="contact-wrapper glass-card">
-          
-          <div class="contact-info">
-            <span class="section-subtitle">DISCUTONS DE VOTRE PROJET</span>
-            <h2 class="contact-title">Prêt à donner vie à votre <span class="text-gradient">site web</span> ?</h2>
-            <p class="contact-desc">
-              Expliquez-moi votre besoin en quelques lignes. Je vous réponds sous 24 heures avec une proposition claire et sans engagement.
-            </p>
-
-            <div class="contact-methods">
-              <a href="https://wa.me/33758018720" target="_blank" class="contact-method-item" id="contact-link-whatsapp">
-                <div class="method-icon icon-wa">
-                  <i class="fa-brands fa-whatsapp"></i>
+            <div class="direct-channels">
+              <a href="https://wa.me/33758018720?text=Bonjour%20Hicham,%20je%20vous%20contacte%20pour%20mon%20site" target="_blank" rel="noopener" class="channel-card wa-channel">
+                <div class="channel-icon"><i class="fa-brands fa-whatsapp"></i></div>
+                <div>
+                  <span class="channel-label">Canal direct WhatsApp</span>
+                  <span class="channel-val">+33 7 58 01 87 20</span>
                 </div>
-                <div class="method-details">
-                  <span class="method-label">WhatsApp (Le plus rapide)</span>
-                  <span class="method-val">+33 7 58 01 87 20</span>
-                </div>
+                <i class="fa-solid fa-arrow-right channel-arrow"></i>
               </a>
 
-              <a href="mailto:contact98hicham@gmail.com" class="contact-method-item" id="contact-link-email">
-                <div class="method-icon icon-mail">
-                  <i class="fa-solid fa-envelope"></i>
+              <a href="mailto:contact98hicham@gmail.com" class="channel-card">
+                <div class="channel-icon"><i class="fa-regular fa-envelope"></i></div>
+                <div>
+                  <span class="channel-label">Email Professionnel</span>
+                  <span class="channel-val">contact98hicham@gmail.com</span>
                 </div>
-                <div class="method-details">
-                  <span class="method-label">Email Professionnel</span>
-                  <span class="method-val">contact98hicham@gmail.com</span>
-                </div>
+                <i class="fa-solid fa-arrow-right channel-arrow"></i>
               </a>
-
-              <div class="contact-method-item">
-                <div class="method-icon icon-geo">
-                  <i class="fa-solid fa-location-dot"></i>
-                </div>
-                <div class="method-details">
-                  <span class="method-label">Zone d'intervention</span>
-                  <span class="method-val">Paris, Île-de-France & À distance</span>
-                </div>
-              </div>
             </div>
           </div>
 
           <!-- Contact Form -->
-          <form class="contact-form" id="contact-form">
-            <div class="form-group">
-              <label for="form-name">Votre Nom & Prénom *</label>
-              <input type="text" id="form-name" name="name" required placeholder="Ex. Sophie Martin" class="form-input" />
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label for="form-email">Adresse Email *</label>
-                <input type="email" id="form-email" name="email" required placeholder="sophie@exemple.com" class="form-input" />
+          <div class="contact-right">
+            <form class="editorial-form" id="contact-form">
+              <div class="form-field">
+                <label for="form-name">Nom & Prénom</label>
+                <input type="text" id="form-name" required placeholder="Ex. Sabina Nougarède" />
               </div>
-              <div class="form-group">
-                <label for="form-phone">Téléphone</label>
-                <input type="tel" id="form-phone" name="phone" placeholder="06 12 34 56 78" class="form-input" />
+
+              <div class="form-split">
+                <div class="form-field">
+                  <label for="form-email">Adresse Email</label>
+                  <input type="email" id="form-email" required placeholder="contact@exemple.com" />
+                </div>
+                <div class="form-field">
+                  <label for="form-phone">Téléphone</label>
+                  <input type="tel" id="form-phone" placeholder="06 12 34 56 78" />
+                </div>
               </div>
-            </div>
 
-            <div class="form-group">
-              <label for="form-type">Type de projet *</label>
-              <select id="form-type" name="project_type" class="form-select">
-                <option value="sante">Site pour Cabinet Médical / Professionnel de Santé</option>
-                <option value="artisan">Site Vitrine Artisan / Créateur</option>
-                <option value="depannage">Dépannage d'urgence / Sécurité</option>
-                <option value="ecommerce">Boutique E-commerce</option>
-                <option value="autre">Autre demande sur-mesure</option>
-              </select>
-            </div>
+              <div class="form-field">
+                <label for="form-type">Domaine du projet</label>
+                <select id="form-type">
+                  <option value="Santé & Cabinet Médical">Cabinet Médical / Professionnel de Santé</option>
+                  <option value="Artisanat & Création">Artisanat, Mode & Commerce</option>
+                  <option value="Dépannage d'urgence & Sécurité">Dépannage d'urgence / Sécurité Web</option>
+                  <option value="Application sur-mesure">Application Web sur-mesure</option>
+                </select>
+              </div>
 
-            <div class="form-group">
-              <label for="form-message">Votre Message *</label>
-              <textarea id="form-message" name="message" required rows="4" placeholder="Décrivez brièvement votre projet ou votre problème technique..." class="form-textarea"></textarea>
-            </div>
+              <div class="form-field">
+                <label for="form-message">Détails de votre besoin</label>
+                <textarea id="form-message" required rows="4" placeholder="Expliquez brièvement votre projet ou le problème rencontré..."></textarea>
+              </div>
 
-            <button type="submit" class="btn btn-primary btn-lg w-full" id="btn-submit-form">
-              <span>Envoyer ma demande</span>
-              <i class="fa-solid fa-paper-plane"></i>
-            </button>
-            <p class="form-feedback" id="form-feedback"></p>
-          </form>
-
+              <button type="submit" class="btn-submit" id="btn-submit-contact">
+                <span>Envoyer via WhatsApp & Email</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+              <div class="form-status" id="form-status"></div>
+            </form>
+          </div>
         </div>
 
       </div>
@@ -574,33 +587,34 @@
   </main>
 
   <!-- ========================================================================= -->
-  <!-- FOOTER -->
+  <!-- FOOTER (Minimalist Clean) -->
   <!-- ========================================================================= -->
-  <footer class="footer">
-    <div class="container footer-container">
-      <div class="footer-brand">
-        <span class="brand-logo">Hicham <span class="text-gradient">Aitsaid</span></span>
-        <p class="footer-tagline">Développeur Web Freelance • Spécialiste Santé, E-Commerce & Sécurité.</p>
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="foot-col">
+        <span class="foot-brand">Hicham Aitsaid</span>
+        <p class="foot-desc">Software Engineer & Health-Tech Consultant — Paris, France.</p>
       </div>
 
-      <div class="footer-links">
-        <a href="#hero">Accueil</a>
-        <a href="#specialites">Spécialités</a>
-        <a href="#projets">Réalisations</a>
-        <a href="#services">Tarifs</a>
+      <div class="foot-col foot-links">
+        <a href="#works">Réalisations</a>
+        <a href="#expertise">Approche</a>
+        <a href="#services">Services</a>
+        <a href="#about">Parcours</a>
         <a href="#contact">Contact</a>
       </div>
 
-      <div class="footer-legal">
-        <p>© 2026 Hicham AITSAID (EI) — SIRET 10754840600019 — Tous droits réservés.</p>
+      <div class="foot-col foot-legal">
+        <p>© 2026 Hicham AITSAID (EI)</p>
+        <p class="foot-siren">SIREN 107 548 406 • SIRET 10754840600019</p>
       </div>
     </div>
   </footer>
 
-  <!-- Floating Direct WhatsApp Button -->
-  <a href="https://wa.me/33758018720?text=Bonjour%20Hicham,%20je%20vous%20contacte%20depuis%20votre%20portfolio" target="_blank" rel="noopener" class="floating-wa-btn" id="floating-whatsapp-btn" title="Discuter sur WhatsApp">
+  <!-- Floating Minimal WhatsApp Pill -->
+  <a href="https://wa.me/33758018720?text=Bonjour%20Hicham,%20je%20vous%20contacte%20depuis%20votre%20portfolio" target="_blank" rel="noopener" class="wa-floating-pill" id="floating-wa-pill" title="WhatsApp">
     <i class="fa-brands fa-whatsapp"></i>
-    <span class="floating-wa-tooltip">Discuter sur WhatsApp</span>
+    <span>WhatsApp Direct</span>
   </a>
 
   <script src="main.js"></script>
