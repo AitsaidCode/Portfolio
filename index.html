@@ -195,51 +195,68 @@
     </div>
 
     <!-- ========================================================================= -->
-    <!-- 4. SELECTED WORKS / CAS CLIENTS -->
+    <!-- 4. SELECTED WORKS / ÉTUDES DE CAS AVEC VISUELS RÉELS -->
     <!-- ========================================================================= -->
     <section class="content-section" id="work">
       <div class="container">
         
         <div class="section-title-wrap">
-          <span class="section-kicker">01 / PROJETS RÉELS</span>
-          <h2 class="section-big-title">Des applications et dépannages qui <span class="playfair-italic">produisent des résultats.</span></h2>
+          <span class="section-kicker">01 / PROJETS RÉELS & ÉTUDES DE CAS</span>
+          <h2 class="section-big-title">Des réalisations concrètes qui <span class="playfair-italic">produisent des résultats.</span></h2>
+          <p class="section-subtitle">Chaque projet répond à un défi précis : performance, sécurité critique ou traitement de flux complexes.</p>
         </div>
 
         <div class="works-stack">
           
           <!-- Case 01: Allo Infirmier -->
-          <article class="work-card">
-            <div class="work-top-row">
-              <div class="work-tags">
-                <span class="chip chip-dark">Santé & Coordination</span>
-                <span class="chip">React 19</span>
-                <span class="chip">MySQL / SQL</span>
-                <span class="chip">API REST</span>
-                <span class="chip chip-green"><span class="dot-live"></span> En ligne</span>
-              </div>
-              <a href="https://alloinfimier.vercel.app" target="_blank" rel="noopener noreferrer" class="work-external-btn" aria-label="Visiter Allo Infirmier">
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-              </a>
-            </div>
-
-            <div class="work-grid-body">
-              <div class="work-main-col">
-                <h3 class="work-title">Allo Infirmier — Plateforme de Soins à Domicile</h3>
-                <p class="work-desc">
-                  Application moderne trilingue (Français, Anglais, Arabe avec mise en page RTL native) conçue pour automatiser les demandes de soins infirmiers à domicile, enregistrer les réservations sur base de données SQL et envoyer des alertes WhatsApp / Email en temps réel.
-                </p>
-                <div class="work-takeaways">
-                  <div class="takeaway-item"><i class="fa-solid fa-check text-terracotta"></i> Prise de contact WhatsApp en un clic</div>
-                  <div class="takeaway-item"><i class="fa-solid fa-check text-terracotta"></i> Formulaire intelligent relié à la base de données MySQL</div>
-                  <div class="takeaway-item"><i class="fa-solid fa-check text-terracotta"></i> Mode sombre/clair avec mémorisation</div>
+          <article class="work-card work-card-visual">
+            <div class="work-visual-col">
+              <div class="project-mockup-frame">
+                <div class="mockup-browser-header">
+                  <span class="mock-dot dot-r"></span>
+                  <span class="mock-dot dot-y"></span>
+                  <span class="mock-dot dot-g"></span>
+                  <span class="mock-url-bar">alloinfimier.vercel.app</span>
+                </div>
+                <div class="mockup-img-wrap">
+                  <img src="assets/alloinfirmier-preview.png" alt="Interface Allo Infirmier — Coordination de soins à domicile" class="project-screenshot" />
+                  <div class="mockup-overlay-badge">
+                    <span class="dot-live"></span> En production
+                  </div>
                 </div>
               </div>
+            </div>
 
-              <div class="work-metric-box">
-                <span class="metric-eyebrow">TEMPS DE CHARGEMENT</span>
-                <span class="metric-value">&lt; 0.6s</span>
-                <p class="metric-context">Optimisation SPA Vite avec chargement asynchrone pour mobile.</p>
-                <a href="https://alloinfimier.vercel.app" target="_blank" rel="noopener noreferrer" class="metric-link">
+            <div class="work-content-col">
+              <div class="work-top-meta">
+                <div class="work-tags">
+                  <span class="chip chip-dark">Santé & Coordination</span>
+                  <span class="chip">React 19</span>
+                  <span class="chip">MySQL / SQL</span>
+                  <span class="chip">WhatsApp API</span>
+                </div>
+                <a href="https://alloinfimier.vercel.app" target="_blank" rel="noopener noreferrer" class="work-external-btn" aria-label="Visiter Allo Infirmier">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+              </div>
+
+              <h3 class="work-title">Allo Infirmier — Plateforme de Soins à Domicile</h3>
+              <p class="work-desc">
+                Application web trilingue (Français, Anglais, Arabe avec mise en page RTL native) conçue pour digitaliser et automatiser les demandes de soins infirmiers à domicile, centraliser les réservations sur base de données SQL et déclencher les alertes WhatsApp en direct.
+              </p>
+
+              <div class="work-takeaways">
+                <div class="takeaway-item"><i class="fa-solid fa-check text-terracotta"></i> Prise de contact WhatsApp instantanée avec pré-remplissage</div>
+                <div class="takeaway-item"><i class="fa-solid fa-check text-terracotta"></i> Formulaire intelligent relié à la base relationnelle MySQL</div>
+                <div class="takeaway-item"><i class="fa-solid fa-check text-terracotta"></i> Vitesse ultra-rapide optimisée pour les urgences mobiles</div>
+              </div>
+
+              <div class="work-footer-row">
+                <div class="metric-mini-pill">
+                  <span class="metric-mini-val">&lt; 0.6s</span>
+                  <span class="metric-mini-label">Chargement mobile</span>
+                </div>
+                <a href="https://alloinfimier.vercel.app" target="_blank" rel="noopener noreferrer" class="btn-outline-dark btn-sm">
                   Tester l'application live →
                 </a>
               </div>
@@ -247,72 +264,105 @@
           </article>
 
           <!-- Case 02: Sabina Nougarède -->
-          <article class="work-card">
-            <div class="work-top-row">
-              <div class="work-tags">
-                <span class="chip chip-dark">E-Commerce & Sécurité</span>
-                <span class="chip">PrestaShop 1.7</span>
-                <span class="chip">Cybersécurité</span>
-                <span class="chip">PHP / MySQL</span>
-                <span class="chip chip-terracotta">✓ 100% Résolu</span>
-              </div>
-              <a href="https://sabinanougarede.com" target="_blank" rel="noopener noreferrer" class="work-external-btn" aria-label="Visiter Sabina Nougarede">
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-              </a>
-            </div>
-
-            <div class="work-grid-body">
-              <div class="work-main-col">
-                <h3 class="work-title">Sabina Nougarède — Diagnostic & Sécurisation Back-Office</h3>
-                <p class="work-desc">
-                  Intervention critique sur le site e-commerce d'une créatrice de mode et bijoux. Analyse en profondeur d'une boucle infinie d'authentification, identification d'un script d'exfiltration injecté (malware), réintégration du cycle <code>EmployeeSession</code> et configuration SSL reverse-proxy OVH.
-                </p>
-                <div class="work-takeaways">
-                  <div class="takeaway-item"><i class="fa-solid fa-check text-terracotta"></i> Éradication totale du malware dans AdminLoginController</div>
-                  <div class="takeaway-item"><i class="fa-solid fa-check text-terracotta"></i> Accès administrateur et catalogue restaurés (HTTP 200 OK)</div>
-                  <div class="takeaway-item"><i class="fa-solid fa-check text-terracotta"></i> Rapport technique d'intervention & audit remis à la cliente</div>
+          <article class="work-card work-card-visual">
+            <div class="work-visual-col">
+              <div class="project-mockup-frame">
+                <div class="mockup-browser-header">
+                  <span class="mock-dot dot-r"></span>
+                  <span class="mock-dot dot-y"></span>
+                  <span class="mock-dot dot-g"></span>
+                  <span class="mock-url-bar">sabinanougarede.com</span>
+                </div>
+                <div class="mockup-img-wrap">
+                  <img src="assets/sabinanougarede-preview.png" alt="Boutique en ligne Sabina Nougarède — Mode et Bijouterie" class="project-screenshot" />
+                  <div class="mockup-overlay-badge badge-resolved">
+                    <i class="fa-solid fa-shield-check"></i> Sécurisé & Restauré
+                  </div>
                 </div>
               </div>
+            </div>
 
-              <div class="work-metric-box">
-                <span class="metric-eyebrow">RÉSULTAT SÉCURITÉ</span>
-                <span class="metric-value">HTTP 200</span>
-                <p class="metric-context">Back-Office 100% opérationnel & serveur entièrement assaini.</p>
-                <a href="https://sabinanougarede.com" target="_blank" rel="noopener noreferrer" class="metric-link">
-                  Voir la boutique en ligne →
+            <div class="work-content-col">
+              <div class="work-top-meta">
+                <div class="work-tags">
+                  <span class="chip chip-dark">E-Commerce & Sécurité</span>
+                  <span class="chip">PrestaShop 1.7</span>
+                  <span class="chip">Cybersécurité</span>
+                  <span class="chip">PHP / MySQL</span>
+                </div>
+                <a href="https://sabinanougarede.com" target="_blank" rel="noopener noreferrer" class="work-external-btn" aria-label="Visiter Sabina Nougarede">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+              </div>
+
+              <h3 class="work-title">Sabina Nougarède — Diagnostic & Dépannage Critique Back-Office</h3>
+              <p class="work-desc">
+                Intervention d'urgence sur la boutique e-commerce d'une créatrice de mode et bijoux. Analyse en profondeur d'une boucle infinie d'authentification, identification et nettoyage d'un malware espion injecté dans <code>AdminLoginController.php</code>, et alignement SSL reverse-proxy OVH.
+              </p>
+
+              <div class="work-takeaways">
+                <div class="takeaway-item"><i class="fa-solid fa-check text-terracotta"></i> Éradication totale du malware espion dans les contrôleurs</div>
+                <div class="takeaway-item"><i class="fa-solid fa-check text-terracotta"></i> Accès administrateur et commandes rétablis (HTTP 200 OK)</div>
+                <div class="takeaway-item"><i class="fa-solid fa-check text-terracotta"></i> Rapport technique d'audit remis à la cliente</div>
+              </div>
+
+              <div class="work-footer-row">
+                <div class="metric-mini-pill">
+                  <span class="metric-mini-val">HTTP 200</span>
+                  <span class="metric-mini-label">Accès 100% opérationnel</span>
+                </div>
+                <a href="https://sabinanougarede.com" target="_blank" rel="noopener noreferrer" class="btn-outline-dark btn-sm">
+                  Voir la boutique live →
                 </a>
               </div>
             </div>
           </article>
 
-          <!-- Case 03: Biomédical / Hospitalier -->
-          <article class="work-card">
-            <div class="work-top-row">
-              <div class="work-tags">
-                <span class="chip chip-dark">Données Cliniques & IA</span>
-                <span class="chip">Python / SQL</span>
-                <span class="chip">Visionneuse OHIF</span>
-                <span class="chip">Centre Henri-Becquerel</span>
+          <!-- Case 03: Biomédical / OHIF DICOM -->
+          <article class="work-card work-card-visual">
+            <div class="work-visual-col">
+              <div class="project-mockup-frame mockup-dark-theme">
+                <div class="mockup-browser-header">
+                  <span class="mock-dot dot-r"></span>
+                  <span class="mock-dot dot-y"></span>
+                  <span class="mock-dot dot-g"></span>
+                  <span class="mock-url-bar">ohif.viewer / dicom-study-list</span>
+                </div>
+                <div class="mockup-img-wrap">
+                  <img src="assets/dicom-ohif.png" alt="Visionneuse OHIF DICOM & Imagerie Médicale" class="project-screenshot" />
+                  <div class="mockup-overlay-badge badge-hospital">
+                    <i class="fa-solid fa-hospital"></i> Standard Médical
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div class="work-grid-body">
-              <div class="work-main-col">
-                <h3 class="work-title">Plateforme d'Imagerie & Entrepôt de Données Médicales</h3>
-                <p class="work-desc">
-                  Développement d'une plateforme sécurisée de gestion de cas cliniques en oncologie médicale. Intégration de la visionneuse standardisée OHIF pour les images DICOM, anonymisation des données de santé et harmonisation OMOP CDM.
-                </p>
-                <div class="work-takeaways">
-                  <div class="takeaway-item"><i class="fa-solid fa-check text-terracotta"></i> Interopérabilité hospitalière (HL7 FHIR / DICOM)</div>
-                  <div class="takeaway-item"><i class="fa-solid fa-check text-terracotta"></i> Analyse de bases massives (MIMIC-III / BigQuery)</div>
-                  <div class="takeaway-item"><i class="fa-solid fa-check text-terracotta"></i> Traitement du langage naturel médical (BERT NLP)</div>
+            <div class="work-content-col">
+              <div class="work-top-meta">
+                <div class="work-tags">
+                  <span class="chip chip-dark">Données Cliniques & IA</span>
+                  <span class="chip">OHIF Viewer</span>
+                  <span class="chip">DICOM / HL7 FHIR</span>
+                  <span class="chip">Centre Henri-Becquerel</span>
                 </div>
               </div>
 
-              <div class="work-metric-box">
-                <span class="metric-eyebrow">STANDARD SANTÉ</span>
-                <span class="metric-value">DICOM</span>
-                <p class="metric-context">Respect strict de la confidentialité et des normes médicales.</p>
+              <h3 class="work-title">Plateforme d'Imagerie Clinique & Entrepôt de Données Médicales</h3>
+              <p class="work-desc">
+                Développement d'une plateforme standardisée de gestion et visualisation de données cliniques en oncologie médicale. Intégration de la visionneuse open-source OHIF pour les examens d'imagerie (CT, IRM, Échographie), anonymisation et modélisation OMOP CDM.
+              </p>
+
+              <div class="work-takeaways">
+                <div class="takeaway-item"><i class="fa-solid fa-check text-terracotta"></i> Interopérabilité hospitalière standardisée (HL7 FHIR & DICOM)</div>
+                <div class="takeaway-item"><i class="fa-solid fa-check text-terracotta"></i> Traitement de bases massives et pipelines NLP (BERT médical)</div>
+                <div class="takeaway-item"><i class="fa-solid fa-check text-terracotta"></i> Sécurité maximale des données de santé</div>
+              </div>
+
+              <div class="work-footer-row">
+                <div class="metric-mini-pill">
+                  <span class="metric-mini-val">DICOM</span>
+                  <span class="metric-mini-label">Conformité hospitalière</span>
+                </div>
               </div>
             </div>
           </article>
