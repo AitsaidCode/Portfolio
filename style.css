@@ -68,7 +68,7 @@ body {
 
 .container {
   width: 100%;
-  max-width: 1220px;
+  max-width: 1240px;
   margin: 0 auto;
   padding: 0 32px;
 }
@@ -92,7 +92,7 @@ body {
   inset-x: 0;
   top: 0;
   height: 120px;
-  background: linear-gradient(to bottom, rgba(251, 249, 244, 0.8) 0%, rgba(251, 249, 244, 0) 100%);
+  background: linear-gradient(to bottom, rgba(251, 249, 244, 0.85) 0%, rgba(251, 249, 244, 0) 100%);
   backdrop-filter: blur(10px);
   pointer-events: none;
   z-index: 40;
@@ -111,17 +111,16 @@ body {
   display: flex;
   align-items: center;
   gap: 28px;
-  padding: 8px 12px 8px 16px;
+  padding: 8px 14px 8px 16px;
   border-radius: var(--radius-pill);
-  border: 1px solid rgba(255, 255, 255, 0.7);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.6) 0%, rgba(245, 245, 245, 0.95) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.65) 0%, rgba(245, 245, 245, 0.95) 100%);
   box-shadow: var(--shadow-pill);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Dark mode version when scrolling over dark sections */
 .floating-nav-pill.theme-dark-nav {
   background: linear-gradient(180deg, rgba(32, 33, 43, 0.85) 0%, rgba(23, 24, 33, 0.95) 100%);
   border-color: rgba(255, 255, 255, 0.12);
@@ -155,18 +154,13 @@ body {
   text-decoration: none;
 }
 
-.brand-avatar {
-  width: 32px;
-  height: 32px;
-  background: var(--text-ink);
-  color: #FFF;
-  font-family: var(--font-heading);
-  font-size: 0.8rem;
-  font-weight: 800;
+.brand-avatar-img {
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  object-fit: cover;
+  object-position: center;
+  border: 1px solid rgba(26, 23, 20, 0.15);
 }
 
 .brand-text {
@@ -176,10 +170,10 @@ body {
 
 .brand-name {
   font-family: var(--font-heading);
-  font-size: 0.82rem;
+  font-size: 0.84rem;
   font-weight: 700;
   color: #212529;
-  line-height: 1.1;
+  line-height: 1.15;
 }
 
 .brand-sub {
@@ -376,18 +370,11 @@ body {
   box-shadow: 0 4px 14px rgba(0,0,0,0.06);
 }
 
-.mobile-avatar {
+.mobile-avatar-img {
   width: 28px;
   height: 28px;
-  background: var(--text-ink);
-  color: #FFF;
-  font-family: var(--font-heading);
-  font-size: 0.75rem;
-  font-weight: 800;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  object-fit: cover;
 }
 
 .mobile-name {
@@ -422,25 +409,25 @@ body {
 }
 
 /* ==========================================================================
-   2. HERO SECTION
+   2. HERO SECTION (Surinder layout with Portrait & Rotor)
    ========================================================================== */
 .hero-section {
-  padding: 170px 0 80px;
-  min-height: 86vh;
+  padding: 160px 0 70px;
+  min-height: 88vh;
   display: flex;
   align-items: center;
 }
 
 .hero-container {
   display: grid;
-  grid-template-columns: 1.25fr 0.75fr;
-  gap: 48px;
+  grid-template-columns: 1.25fr 0.95fr;
+  gap: 40px;
   align-items: center;
 }
 
 .hero-headline {
   font-family: var(--font-heading);
-  font-size: 3.6rem;
+  font-size: 3.5rem;
   font-weight: 800;
   line-height: 1.15;
   letter-spacing: -0.025em;
@@ -465,7 +452,7 @@ body {
   align-items: center;
   gap: 28px;
   flex-wrap: wrap;
-  margin-bottom: 48px;
+  margin-bottom: 40px;
 }
 
 .btn-with-sub {
@@ -519,7 +506,7 @@ body {
 .hero-proof-bar {
   display: flex;
   flex-wrap: wrap;
-  gap: 14px;
+  gap: 12px;
   border-top: 1px solid var(--border-light);
   padding-top: 24px;
 }
@@ -540,17 +527,37 @@ body {
   color: var(--text-ink);
 }
 
-/* Rotating Seal Badge */
-.hero-badge-col {
+/* Portrait & Overlapping Rotor Badge (Exact Surinder Look) */
+.hero-portrait-col {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
+  position: relative;
 }
 
-.rotating-seal-wrap {
+.portrait-wrapper {
   position: relative;
-  width: 200px;
-  height: 200px;
+  width: 100%;
+  max-width: 440px;
+}
+
+.portrait-img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+  object-fit: cover;
+  box-shadow: 0 20px 40px -10px rgba(26, 23, 20, 0.18);
+  display: block;
+}
+
+.portrait-seal-badge {
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  width: 140px;
+  height: 140px;
+  z-index: 10;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.25));
 }
 
 .rotating-seal-svg {
@@ -572,7 +579,7 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 2.2rem;
+  font-size: 1.8rem;
 }
 
 /* ==========================================================================
@@ -1299,8 +1306,15 @@ body {
   .hero-headline {
     font-size: 2.8rem;
   }
-  .hero-badge-col {
-    justify-content: flex-start;
+  .portrait-wrapper {
+    max-width: 360px;
+    margin: 0 auto;
+  }
+  .portrait-seal-badge {
+    bottom: -15px;
+    right: -15px;
+    width: 120px;
+    height: 120px;
   }
   .work-grid-body {
     grid-template-columns: 1fr;

@@ -18,7 +18,7 @@
 </head>
 <body class="bg-sand text-ink antialiased">
 
-  <!-- Top Ambient Blurred Veil (Surinder style) -->
+  <!-- Top Ambient Blurred Veil (Surinder signature) -->
   <div id="top-veil" aria-hidden="true" class="top-veil"></div>
 
   <!-- ========================================================================= -->
@@ -27,7 +27,7 @@
   <nav id="nav-pill" class="floating-nav-pill">
     <div class="nav-brand-group">
       <a href="#hero" class="nav-brand-link">
-        <span class="brand-avatar">HA</span>
+        <img src="assets/hicham.jpg" alt="Hicham Aitsaid" class="brand-avatar-img" />
         <div class="brand-text">
           <span class="brand-name">Hicham A.</span>
           <span class="brand-sub">Software & Health-Tech</span>
@@ -71,7 +71,7 @@
   <!-- Mobile Top Bar -->
   <div class="mobile-topbar" id="mobile-topbar">
     <a href="#hero" class="mobile-id-pill">
-      <span class="mobile-avatar">HA</span>
+      <img src="assets/hicham.jpg" alt="Hicham Aitsaid" class="mobile-avatar-img" />
       <div class="mobile-text">
         <span class="mobile-name">Hicham A.</span>
         <span class="mobile-sub">Software & Santé</span>
@@ -89,11 +89,12 @@
 
   <main>
     <!-- ========================================================================= -->
-    <!-- 2. HERO SECTION (Surinder layout: Statement + Rotating Seal + Diplomas) -->
+    <!-- 2. HERO SECTION (Exact Surinder layout with Hicham portrait + Rotor Badge) -->
     <!-- ========================================================================= -->
     <section class="hero-section" id="hero">
       <div class="container hero-container">
         
+        <!-- Left Column: Content -->
         <div class="hero-text-block">
           <h1 class="hero-headline">
             Le code est partout.<br />
@@ -136,31 +137,36 @@
           </div>
         </div>
 
-        <!-- Rotating Seal Badge (Surinder signature) -->
-        <div class="hero-badge-col">
-          <div class="rotating-seal-wrap">
-            <svg viewBox="0 0 150 150" class="rotating-seal-svg" role="img" aria-label="Badge Hicham Aitsaid Software Engineer">
-              <defs>
-                <linearGradient id="seal-grad" x1="133.5" y1="26.5" x2="21.5" y2="125.5" gradientUnits="userSpaceOnUse">
-                  <stop stop-color="#1A1714" />
-                  <stop offset="1" stop-color="#2D2824" />
-                </linearGradient>
-                <path id="seal-circle" d="M 75,75 m -58,0 a 58,58 0 1,1 116,0 a 58,58 0 1,1 -116,0" fill="none" />
-              </defs>
-              <circle cx="75" cy="75" r="75" fill="url(#seal-grad)" />
-              <g class="badge-rotor">
-                <text fill="#FBF9F4" font-family="'Space Grotesk', sans-serif" font-size="11.5" font-weight="700" letter-spacing="2">
-                  <textPath href="#seal-circle" startOffset="0" textLength="182">
-                    SOFTWARE ENGINEER ·
-                  </textPath>
-                  <textPath href="#seal-circle" startOffset="50%" textLength="182">
-                    HEALTH-TECH EXPERT ·
-                  </textPath>
-                </text>
-              </g>
-            </svg>
-            <div class="seal-inner-icon">
-              <i class="fa-solid fa-shield-halved text-terracotta"></i>
+        <!-- Right Column: Surinder-style Portrait + Overlapping Rotating Badge -->
+        <div class="hero-portrait-col">
+          <div class="portrait-wrapper">
+            <img src="assets/hicham.jpg" alt="Hicham Aitsaid — Software Engineer & Health-Tech" class="portrait-img" />
+            
+            <!-- Rotating Seal Badge overlapping the portrait -->
+            <div class="portrait-seal-badge">
+              <svg viewBox="0 0 150 150" class="rotating-seal-svg" role="img" aria-label="Badge Software Engineer & Health-Tech">
+                <defs>
+                  <linearGradient id="seal-grad" x1="133.5" y1="26.5" x2="21.5" y2="125.5" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#1A1714" />
+                    <stop offset="1" stop-color="#2D2824" />
+                  </linearGradient>
+                  <path id="seal-circle" d="M 75,75 m -58,0 a 58,58 0 1,1 116,0 a 58,58 0 1,1 -116,0" fill="none" />
+                </defs>
+                <circle cx="75" cy="75" r="75" fill="url(#seal-grad)" />
+                <g class="badge-rotor">
+                  <text fill="#FBF9F4" font-family="'Space Grotesk', sans-serif" font-size="11.5" font-weight="700" letter-spacing="2">
+                    <textPath href="#seal-circle" startOffset="0" textLength="182">
+                      SOFTWARE ENGINEER ·
+                    </textPath>
+                    <textPath href="#seal-circle" startOffset="50%" textLength="182">
+                      HEALTH-TECH EXPERT ·
+                    </textPath>
+                  </text>
+                </g>
+              </svg>
+              <div class="seal-inner-icon">
+                <i class="fa-solid fa-shield-halved text-terracotta"></i>
+              </div>
             </div>
           </div>
         </div>
