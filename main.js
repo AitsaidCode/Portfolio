@@ -1,79 +1,74 @@
 /**
- * PORTFOLIO - HICHAM AITSAID
- * Awwwards-style Interactions & WhatsApp Bridge
+ * SURINDER-STYLE SCRIPT FOR HICHAM AITSAID
+ * Dynamic theme adaptation on scroll & WhatsApp bridge
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Mobile Menu Overlay Toggle
-  const menuToggleBtn = document.getElementById('menu-toggle-btn');
-  const mobileOverlay = document.getElementById('mobile-overlay');
-  const mobileLinks = document.querySelectorAll('.mobile-link');
+  const navPill = document.getElementById('nav-pill');
+  const darkSections = document.querySelectorAll('.dark-background');
 
-  if (menuToggleBtn && mobileOverlay) {
-    menuToggleBtn.addEventListener('click', () => {
-      mobileOverlay.classList.toggle('active');
-      const isOpen = mobileOverlay.classList.contains('active');
-      document.body.style.overflow = isOpen ? 'hidden' : '';
+  // 1. Dynamic Nav Pill theme changer when intersecting dark sections
+  function updateNavTheme() {
+    if (!navPill) return;
+    const navRect = navPill.getBoundingClientRect();
+    const navCenter = navRect.top + navRect.height / 2;
+
+    let isOverDark = false;
+    darkSections.forEach(section => {
+      const rect = section.getBoundingClientRect();
+      if (rect.top <= navCenter && rect.bottom >= navCenter) {
+        isOverDark = true;
+      }
     });
 
-    mobileLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        mobileOverlay.classList.remove('active');
-        document.body.style.overflow = '';
-      });
-    });
+    if (isOverDark) {
+      navPill.classList.add('theme-dark-nav');
+    } else {
+      navPill.classList.remove('theme-dark-nav');
+    }
   }
 
-  // 2. Header blur enhancement on scroll
-  const header = document.querySelector('.site-header');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-      header.style.background = 'rgba(10, 12, 16, 0.92)';
-      header.style.padding = '14px 32px';
-    } else {
-      header.style.background = 'rgba(10, 12, 16, 0.75)';
-      header.style.padding = '20px 32px';
-    }
-  });
+  window.addEventListener('scroll', updateNavTheme, { passive: true });
+  updateNavTheme();
 
-  // 3. Contact Form Submission (Direct WhatsApp Bridge)
-  const contactForm = document.getElementById('contact-form');
-  const formStatus = document.getElementById('form-status');
+  // 2. Contact Form to WhatsApp / Email Bridge
+  const form = document.getElementById('portfolio-form');
+  const notice = document.getElementById('form-notice');
 
-  if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+  if (form) {
+    form.addEventListener('submit', (e) => {
       e.preventDefault();
 
-      const name = document.getElementById('form-name').value.trim();
-      const email = document.getElementById('form-email').value.trim();
-      const phone = document.getElementById('form-phone').value.trim();
-      const type = document.getElementById('form-type').value;
-      const message = document.getElementById('form-message').value.trim();
+      const name = document.getElementById('f-name').value.trim();
+      const email = document.getElementById('f-email').value.trim();
+      const phone = document.getElementById('f-phone').value.trim();
+      const type = document.getElementById('f-type').value;
+      const message = document.getElementById('f-message').value.trim();
 
       if (!name || !email || !message) {
-        formStatus.textContent = 'Veuillez renseigner votre nom, email et message.';
-        formStatus.className = 'form-status error';
+        notice.textContent = 'Veuillez remplir votre nom, email et message.';
+        notice.className = 'form-notice error';
         return;
       }
 
       const waText = encodeURIComponent(
         `Bonjour Hicham,\n\n` +
-        `Je vous contacte via votre portfolio :\n` +
+        `Je vous contacte depuis votre portfolio :\n` +
         `• Nom : ${name}\n` +
         `• Email : ${email}\n` +
         `• Téléphone : ${phone || 'Non renseigné'}\n` +
-        `• Domaine : ${type}\n\n` +
-        `Message :\n${message}`
+        `• Besoin : ${type}\n\n` +
+        `Détails :\n${message}`
       );
 
-      formStatus.textContent = 'Ouverture de WhatsApp...';
-      formStatus.className = 'form-status success';
+      notice.textContent = 'Ouverture de votre messagerie WhatsApp...';
+      notice.className = 'form-notice success';
 
       setTimeout(() => {
         window.open(`https://wa.me/33758018720?text=${waText}`, '_blank');
-        contactForm.reset();
-        formStatus.textContent = 'Message prêt sur WhatsApp ! Vous pouvez aussi m\'écrire à contact98hicham@gmail.com.';
-      }, 700);
+        form.reset();
+        notice.textContent = 'Demande envoyée ! Vous pouvez aussi me contacter directement à contact98hicham@gmail.com.';
+      }, 600);
     });
   }
 });
