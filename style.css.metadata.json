@@ -1,5 +1,5 @@
 {
-  "summary": "Mise à jour du CSS pour le cadrage du portrait et l'intégration du badge rotatif façon surinder.design",
-  "updatedAt": "2026-08-23T12:14:25.554084Z",
+  "summary": "Optimisation complète de la responsivité mobile et tablette dans style.css (zéro débordement, typographie fluide clamp, espacements tactiles adaptés)",
+  "updatedAt": "2026-08-23T14:03:37.251127Z",
   "userFacing": true
 }
