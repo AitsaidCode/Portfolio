@@ -1,0 +1,12 @@
+{
+  "name": "portfolio-hicham-aitsaid",
+  "version": "1.0.0",
+  "description": "Portfolio One-Page de Hicham Aitsaid - Développeur Web & Consultant Santé",
+  "scripts": {
+    "dev": "npx serve .",
+    "start": "npx serve ."
+  },
+  "keywords": ["portfolio", "freelance", "web-developer", "health-tech", "prestashop", "react"],
+  "author": "Hicham AITSAID <contact98hicham@gmail.com>",
+  "license": "MIT"
+}
