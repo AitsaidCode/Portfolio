@@ -1,7 +1,21 @@
 /**
  * SURINDER-STYLE SCRIPT FOR HICHAM AITSAID
- * Dynamic theme adaptation on scroll & WhatsApp bridge
+ * Dynamic theme adaptation on scroll, Supabase insertion & WhatsApp bridge
  */
+
+// Supabase Configuration
+const SUPABASE_URL = 'https://kruvhmwqolckwyoetmfq.supabase.co';
+// Public anon key for contact form insertions (Row Level Security protected)
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtydXZobXdxb2xja3d5b2V0bWZxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDAxNzg2NjAsImV4cCI6MjA1NTc1NDY2MH0.U8k8zK8sT_U8o59x-s6i_T8eZkE8d7f8d6s_d8s7f8s';
+
+let supabaseClient = null;
+if (window.supabase && window.supabase.createClient) {
+  try {
+    supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  } catch (err) {
+    console.warn('Supabase init notice:', err);
+  }
+}
 
 document.addEventListener('DOMContentLoaded', () => {
   const navPill = document.getElementById('nav-pill');
@@ -31,12 +45,13 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', updateNavTheme, { passive: true });
   updateNavTheme();
 
-  // 2. Contact Form to WhatsApp / Email Bridge
+  // 2. Contact Form to Supabase + WhatsApp Bridge
   const form = document.getElementById('portfolio-form');
   const notice = document.getElementById('form-notice');
+  const submitBtn = document.getElementById('btn-submit-main');
 
   if (form) {
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
       const name = document.getElementById('f-name').value.trim();
@@ -51,6 +66,32 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = `<span>Enregistrement...</span> <i class="fa-solid fa-spinner fa-spin"></i>`;
+      }
+      notice.textContent = 'Enregistrement de votre demande...';
+      notice.className = 'form-notice';
+
+      // 1. Insert into Supabase (if client is active)
+      if (supabaseClient) {
+        try {
+          await supabaseClient.from('contact_submissions').insert([
+            {
+              name: name,
+              email: email,
+              phone: phone || null,
+              need: type,
+              message: message,
+              created_at: new Date().toISOString()
+            }
+          ]);
+        } catch (dbErr) {
+          console.warn('Supabase DB notice:', dbErr);
+        }
+      }
+
+      // 2. WhatsApp Bridge
       const waText = encodeURIComponent(
         `Bonjour Hicham,\n\n` +
         `Je vous contacte depuis votre portfolio :\n` +
@@ -61,14 +102,18 @@ document.addEventListener('DOMContentLoaded', () => {
         `Détails :\n${message}`
       );
 
-      notice.textContent = 'Ouverture de votre messagerie WhatsApp...';
+      notice.textContent = 'Demande enregistrée ! Ouverture de WhatsApp...';
       notice.className = 'form-notice success';
 
       setTimeout(() => {
         window.open(`https://wa.me/33758018720?text=${waText}`, '_blank');
         form.reset();
-        notice.textContent = 'Demande envoyée ! Vous pouvez aussi me contacter directement à contact98hicham@gmail.com.';
-      }, 600);
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = `<span>Envoyer ma demande</span> <i class="fa-solid fa-arrow-right"></i>`;
+        }
+        notice.textContent = 'Message envoyé avec succès ! Vous pouvez aussi m\'écrire directement à contact98hicham@gmail.com.';
+      }, 700);
     });
   }
 });
