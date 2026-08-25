@@ -7,7 +7,17 @@
     "start": "npx serve .",
     "test": "node tests/validation.test.js"
   },
-  "keywords": ["portfolio", "freelance", "web-developer", "health-tech", "prestashop", "react"],
+  "keywords": [
+    "portfolio",
+    "freelance",
+    "web-developer",
+    "health-tech",
+    "prestashop",
+    "react"
+  ],
   "author": "Hicham AITSAID <contact98hicham@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1"
+  }
 }
