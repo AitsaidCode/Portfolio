@@ -52,7 +52,7 @@ assert.strictEqual(sanitizeInput(123), '', 'Non-string input handling failed');
 console.log('✓ String sanitization tests passed.');
 
 // Test Case 2: Email Guard Clause
-assert.strictEqual(isValidEmail('contact@devsurmesure.fr'), true, 'Valid domain email test failed');
+assert.strictEqual(isValidEmail('contact@devsurmesure.com'), true, 'Valid domain email test failed');
 assert.strictEqual(isValidEmail('john.doe+filter@sorbonne-universite.fr'), true, 'Complex valid email test failed');
 assert.strictEqual(isValidEmail('plainaddress'), false, 'Missing domain test failed');
 assert.strictEqual(isValidEmail('@missingusername.com'), false, 'Missing local part test failed');
