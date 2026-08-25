@@ -3,13 +3,90 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hicham Aitsaid · Software Engineer & Health-Tech</title>
-  <meta name="description" content="Développeur Web & Ingénieur Biomédical indépendant. Conception de plateformes santé, applications web modernes et sécurisation e-commerce." />
+  <title>Hicham Aitsaid · Software Engineer & Health-Tech Specialist</title>
+  <meta name="description" content="Ingénieur Logiciel & Consultant Informatique Biomédicale (Master Sorbonne). Développement de plateformes santé, web applications modernes et dépannage/sécurisation e-commerce." />
+  <meta name="author" content="Hicham Aitsaid" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://devsurmesure.fr" />
 
-  <!-- Google Fonts: Inter (Black/Bold) + Mukta + Playfair Display (Italic) + Space Grotesk -->
+  <!-- OpenGraph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://devsurmesure.fr" />
+  <meta property="og:title" content="Hicham Aitsaid · Software Engineer & Health-Tech Specialist" />
+  <meta property="og:description" content="Ingénieur Logiciel & Consultant Informatique Biomédicale (Master Sorbonne). Développement de plateformes santé, web applications modernes et sécurisation e-commerce." />
+  <meta property="og:image" content="https://devsurmesure.fr/assets/hicham.jpg" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:site_name" content="Hicham Aitsaid — devsurmesure" />
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Hicham Aitsaid · Software Engineer & Health-Tech Specialist" />
+  <meta name="twitter:description" content="Ingénieur Logiciel & Consultant Informatique Biomédicale (Master Sorbonne). Conception de plateformes santé & web applications." />
+  <meta name="twitter:image" content="https://devsurmesure.fr/assets/hicham.jpg" />
+
+  <!-- Structured Data: Schema.org Person & ProfessionalService -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://devsurmesure.fr/#person",
+        "name": "Hicham Aitsaid",
+        "jobTitle": "Software Engineer & Biomedical Informatics Specialist",
+        "email": "contact98hicham@gmail.com",
+        "telephone": "+33758018720",
+        "url": "https://devsurmesure.fr",
+        "image": "https://devsurmesure.fr/assets/hicham.jpg",
+        "alumniOf": {
+          "@type": "EducationalOrganization",
+          "name": "Sorbonne Paris Nord / Université Paris Cité"
+        },
+        "knowsAbout": [
+          "React",
+          "Node.js",
+          "TypeScript",
+          "PostgreSQL",
+          "MySQL",
+          "Health-Tech",
+          "Biomedical Informatics",
+          "DICOM / HL7 FHIR",
+          "PrestaShop Security"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Paris",
+          "addressRegion": "Île-de-France",
+          "addressCountry": "FR"
+        }
+      },
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://devsurmesure.fr/#service",
+        "name": "devsurmesure - Hicham Aitsaid",
+        "url": "https://devsurmesure.fr",
+        "logo": "https://devsurmesure.fr/assets/hicham.jpg",
+        "image": "https://devsurmesure.fr/assets/hicham.jpg",
+        "telephone": "+33758018720",
+        "priceRange": "€€",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Paris",
+          "addressRegion": "Île-de-France",
+          "addressCountry": "FR"
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Google Fonts: Inter + Mukta + Playfair Display + Space Grotesk -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Mukta:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,500;1,600;1,700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%23B0552F'/><text x='50%' y='55%' text-anchor='middle' fill='white' font-size='48' font-family='sans-serif' font-weight='bold' dy='.3em'>H</text></svg>" />
 
   <!-- FontAwesome 6 Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
@@ -27,7 +104,7 @@
   <nav id="nav-pill" class="floating-nav-pill">
     <div class="nav-brand-group">
       <a href="#hero" class="nav-brand-link">
-        <img src="assets/hicham.jpg" alt="Hicham Aitsaid" class="brand-avatar-img" />
+        <img src="assets/hicham.jpg" alt="Hicham Aitsaid" class="brand-avatar-img" width="36" height="36" loading="eager" decoding="async" />
         <div class="brand-text">
           <span class="brand-name">Hicham A.</span>
           <span class="brand-sub">Software Engineer</span>
@@ -71,7 +148,7 @@
   <!-- Mobile Top Bar -->
   <div class="mobile-topbar" id="mobile-topbar">
     <a href="#hero" class="mobile-id-pill">
-      <img src="assets/hicham.jpg" alt="Hicham Aitsaid" class="mobile-avatar-img" />
+      <img src="assets/hicham.jpg" alt="Hicham Aitsaid" class="mobile-avatar-img" width="32" height="32" loading="eager" decoding="async" />
       <div class="mobile-text">
         <span class="mobile-name">Hicham A.</span>
         <span class="mobile-sub">Software Engineer</span>
@@ -140,7 +217,7 @@
         <!-- Right Column: Surinder-style Portrait + Overlapping Rotating Badge -->
         <div class="hero-portrait-col">
           <div class="portrait-wrapper">
-            <img src="assets/hicham.jpg" alt="Hicham Aitsaid — Software Engineer & Health-Tech" class="portrait-img" />
+            <img src="assets/hicham.jpg" alt="Hicham Aitsaid — Software Engineer & Health-Tech" class="portrait-img" width="440" height="540" fetchpriority="high" loading="eager" decoding="async" />
             
             <!-- Rotating Seal Badge -->
             <div class="portrait-seal-badge">
@@ -219,7 +296,7 @@
                   <span class="mock-url-bar">alloinfimier.vercel.app</span>
                 </div>
                 <div class="mockup-img-wrap">
-                  <img src="assets/alloinfirmier-preview.png" alt="Interface Allo Infirmier — Coordination de soins à domicile" class="project-screenshot" />
+                  <img src="assets/alloinfirmier-preview.png" alt="Interface Allo Infirmier — Coordination de soins à domicile" class="project-screenshot" width="600" height="380" loading="lazy" decoding="async" />
                   <div class="mockup-overlay-badge">
                     <span class="dot-live"></span> En production
                   </div>
@@ -274,7 +351,7 @@
                   <span class="mock-url-bar">sabinanougarede.com</span>
                 </div>
                 <div class="mockup-img-wrap">
-                  <img src="assets/sabinanougarede-preview.png" alt="Boutique en ligne Sabina Nougarède — Mode et Bijouterie" class="project-screenshot" />
+                  <img src="assets/sabinanougarede-preview.png" alt="Boutique en ligne Sabina Nougarède — Mode et Bijouterie" class="project-screenshot" width="600" height="380" loading="lazy" decoding="async" />
                   <div class="mockup-overlay-badge badge-resolved">
                     <i class="fa-solid fa-shield-check"></i> Sécurisé & Restauré
                   </div>
@@ -329,7 +406,7 @@
                   <span class="mock-url-bar">ohif.viewer / dicom-study-list</span>
                 </div>
                 <div class="mockup-img-wrap">
-                  <img src="assets/dicom-ohif.png" alt="Visionneuse OHIF DICOM & Imagerie Médicale" class="project-screenshot" />
+                  <img src="assets/dicom-ohif.png" alt="Visionneuse OHIF DICOM & Imagerie Médicale" class="project-screenshot" width="600" height="380" loading="lazy" decoding="async" />
                   <div class="mockup-overlay-badge badge-hospital">
                     <i class="fa-solid fa-hospital"></i> Standard Médical
                   </div>

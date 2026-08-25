@@ -4,7 +4,8 @@
   "description": "Portfolio One-Page de Hicham Aitsaid - Développeur Web & Consultant Santé",
   "scripts": {
     "dev": "npx serve .",
-    "start": "npx serve ."
+    "start": "npx serve .",
+    "test": "node tests/validation.test.js"
   },
   "keywords": ["portfolio", "freelance", "web-developer", "health-tech", "prestashop", "react"],
   "author": "Hicham AITSAID <contact98hicham@gmail.com>",
