@@ -1,7 +1,8 @@
 /**
- * Unit & Integration Test Suite for Form Validation, Guard Clauses & Bridge Encoding
+ * Unit & Integration Test Suite for Form Validation, Guard Clauses, Bridge Encoding & Server Security
  */
 const assert = require('assert');
+const path = require('path');
 
 // 1. Logic implementations under test
 function isValidEmail(email) {
@@ -40,16 +41,26 @@ function buildWhatsAppPayload(name, email, phone, type, message) {
   return encodeURIComponent(text);
 }
 
-// 2. Test Execution
-console.log('--- Running Guard Clause & Validation Tests ---');
+function validatePathTraversal(requestedUrl, rootDir) {
+  let safePath = path.normalize(decodeURI(requestedUrl.split('?')[0])).replace(/^(\.\.[\/\\])+/, '');
+  if (safePath === '/' || safePath === '') {
+    safePath = '/index.html';
+  }
+  const resolved = path.join(rootDir, safePath);
+  return resolved.startsWith(rootDir);
+}
 
-// Test Case 1: String Sanitization
+// 2. Test Execution
+console.log('--- Running Guard Clause, Validation & Security Tests ---');
+
+// Test Case 1: String Sanitization & XSS Guards
 assert.strictEqual(sanitizeInput('<b>Test</b>'), 'bTest/b', 'HTML tag removal test failed');
+assert.strictEqual(sanitizeInput('<script>alert("xss")</script>'), 'scriptalert("xss")/script', 'Script tag neutralization failed');
 assert.strictEqual(sanitizeInput('   Clean Text   '), 'Clean Text', 'Trimming test failed');
 assert.strictEqual(sanitizeInput(null), '', 'Null input handling failed');
 assert.strictEqual(sanitizeInput(undefined), '', 'Undefined input handling failed');
 assert.strictEqual(sanitizeInput(123), '', 'Non-string input handling failed');
-console.log('✓ String sanitization tests passed.');
+console.log('✓ String sanitization & XSS neutralization tests passed.');
 
 // Test Case 2: Email Guard Clause
 assert.strictEqual(isValidEmail('contact@devsurmesure.com'), true, 'Valid domain email test failed');
@@ -88,6 +99,14 @@ assert.throws(() => {
 }, /Invalid message/, 'Short message failed to trigger guard error');
 console.log('✓ Guard clause rejection tests passed.');
 
-console.log('==============================================');
-console.log('ALL TESTS EXECUTED SUCCESSFULLY WITHOUT ERRORS.');
-console.log('==============================================');
+// Test Case 5: Path Traversal Defenses
+const mockRootDir = '/var/www/devsurmesure';
+assert.strictEqual(validatePathTraversal('/index.html', mockRootDir), true, 'Standard route allowed');
+assert.strictEqual(validatePathTraversal('/assets/style.css', mockRootDir), true, 'Subdirectory asset allowed');
+assert.strictEqual(validatePathTraversal('/../../../etc/passwd', mockRootDir), true, 'Path traversal neutralized within root');
+console.log('✓ Path traversal prevention tests passed.');
+
+console.log('====================================================');
+console.log('ALL EXTENDED SECURITY & VALIDATION TESTS PASSED (100%).');
+console.log('====================================================');
+

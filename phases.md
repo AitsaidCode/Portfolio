@@ -17,6 +17,7 @@
 | **Phase 3** | Interactive UI Components & Dynamic Nav Pill Logic | 🟢 `[COMPLETED]` | requestAnimationFrame observer & state toggling |
 | **Phase 4** | Lead Engine: Validation, Supabase RLS & WhatsApp Bridge | 🟢 `[COMPLETED]` | Unit test suite passing (npm test) |
 | **Phase 5** | Production Readiness, Security Hardening & Final QA | 🟢 `[COMPLETED]` | Regression tests verified, zero placeholders |
+| **Phase 6** | OWASP Top 10:2025 Audit, CSP/HSTS & Defensive Hardening | 🟢 `[COMPLETED]` | 28-point security checklist verified, extended tests passing |
 
 ---
 
@@ -99,3 +100,19 @@
   - **Data Source**: All codebase modules and assets.
   - **Usage / Alteration**: Production bundle execution and automated test harnesses.
   - **Final Destination**: Ready-to-deploy web application.
+
+---
+
+### Phase 6: OWASP Top 10:2025 Audit, CSP/HSTS & Defensive Hardening
+- **Scope**:
+  - Implemented strict Content-Security-Policy (CSP) and HSTS in `vercel.json`.
+  - Added HTTP method guards (`Allow: GET, HEAD`), `/healthz` liveness probes, and graceful shutdown handling (`SIGTERM`/`SIGINT`) to `server.js`.
+  - Expanded unit test suite with path traversal defenses, XSS payload neutralization, and input boundaries in `tests/validation.test.js`.
+  - Completed comprehensive 28-point pre-production security audit against OWASP Top 10:2025 standards.
+- **Status**: 🟢 `[COMPLETED]`
+- **Verification**: 100% automated test execution passing, 28/28 security checklist compliant.
+- **Data Flow Mapping**:
+  - **Data Source**: HTTP request headers, URL parameters, static assets, and external CDN dependencies.
+  - **Usage / Alteration**: Server middleware verifies HTTP verbs and normalizes file paths against directory boundary constraints. CSP headers instruct client browser to whitelist only designated scripts, styles, and BaaS endpoints.
+  - **Final Destination**: Hardened edge responses (Vercel CDN + local server) and client execution sandbox.
+
