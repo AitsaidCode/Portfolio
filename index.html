@@ -717,17 +717,17 @@
             <form id="portfolio-form" class="surinder-form">
               <div class="form-group">
                 <label for="f-name">Votre nom & prénom *</label>
-                <input type="text" id="f-name" required placeholder="Ex. Thomas Laurent" />
+                <input type="text" id="f-name" required maxlength="120" placeholder="Ex. Thomas Laurent" />
               </div>
 
               <div class="form-row-2">
                 <div class="form-group">
                   <label for="f-email">Email *</label>
-                  <input type="email" id="f-email" required placeholder="contact@monentreprise.fr" />
+                  <input type="email" id="f-email" required maxlength="254" placeholder="contact@monentreprise.fr" />
                 </div>
                 <div class="form-group">
                   <label for="f-phone">Téléphone</label>
-                  <input type="tel" id="f-phone" placeholder="06 12 34 56 78" />
+                  <input type="tel" id="f-phone" maxlength="40" placeholder="06 12 34 56 78" />
                 </div>
               </div>
 
@@ -743,7 +743,7 @@
 
               <div class="form-group">
                 <label for="f-message">Message *</label>
-                <textarea id="f-message" required rows="3" placeholder="Décrivez votre besoin en quelques mots..."></textarea>
+                <textarea id="f-message" required maxlength="5000" rows="3" placeholder="Décrivez votre besoin en quelques mots..."></textarea>
               </div>
 
               <button type="submit" class="btn-terracotta w-full" id="btn-submit-main">
@@ -785,7 +785,7 @@
   </footer>
 
   <!-- Supabase JS Client (CDN) -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2/dist/umd/supabase.js" integrity="sha384-Rj26LVGvoeRVR6+mwQmFfcR3QOBEwT+ZmuCWpuiqeTzJpCs0ER4ITAWGb4Hiy3Ok" crossorigin="anonymous"></script>
   <script src="main.js"></script>
 </body>
 </html>

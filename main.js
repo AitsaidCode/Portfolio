@@ -4,15 +4,15 @@
  * Supabase BaaS persistence, and direct communication bridges.
  */
 
-// Supabase Configuration
-const SUPABASE_URL = 'https://kruvhmwqolckwyoetmfq.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtydXZobXdxb2xja3d5b2V0bWZxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDAxNzg2NjAsImV4cCI6MjA1NTc1NDY2MH0.U8k8zK8sT_U8o59x-s6i_T8eZkE8d7f8d6s_d8s7f8s';
+// Supabase Configuration (publishable key: insert-only access enforced by RLS)
+const SUPABASE_URL = 'https://zhzxsrjctdpntbqtsdts.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_vxUopPhT9Uq-rMvlyEp8Cw_W9oduodz';
 const WHATSAPP_PHONE_NUMBER = '33758018720';
 const CONTACT_EMAIL = 'contact98hicham@gmail.com';
 
 // 1. Safe Supabase Initialization with Guard Clauses
 let supabaseClient = null;
-if (typeof window !== 'undefined' && window.supabase && typeof window.supabase.createClient === 'function') {
+if (SUPABASE_URL && SUPABASE_ANON_KEY && typeof window !== 'undefined' && window.supabase && typeof window.supabase.createClient === 'function') {
   try {
     supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
   } catch (initError) {
@@ -36,8 +36,21 @@ function sanitizeInput(value) {
   return value.trim().replace(/[<>]/g, '');
 }
 
-// 4. Main Event Controller
-document.addEventListener('DOMContentLoaded', () => {
+// 4. WhatsApp Message Builder
+function buildWhatsAppText({ name, email, phone, type, message }) {
+  return (
+    `Bonjour Hicham,\n\n` +
+    `Je vous contacte depuis votre portfolio :\n` +
+    `• Nom : ${name}\n` +
+    `• Email : ${email}\n` +
+    `• Téléphone : ${phone.length > 0 ? phone : 'Non renseigné'}\n` +
+    `• Besoin : ${type}\n\n` +
+    `Détails de ma demande :\n${message}`
+  );
+}
+
+// 5. Main Event Controller (browser only)
+if (typeof document !== 'undefined') document.addEventListener('DOMContentLoaded', () => {
   const navPill = document.getElementById('nav-pill');
   const darkSections = document.querySelectorAll('.dark-background');
   const form = document.getElementById('portfolio-form');
@@ -133,13 +146,23 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // UI Feedback: Submission in progress
+    // Step 1: Open WhatsApp synchronously, inside the submit gesture, so popup blockers allow it
+    const waUrl = `https://wa.me/${WHATSAPP_PHONE_NUMBER}?text=${encodeURIComponent(buildWhatsAppText({ name, email, phone, type, message }))}`;
+    const waWindow = window.open(waUrl, '_blank');
+    if (waWindow) {
+      try {
+        waWindow.opener = null;
+      } catch (openerError) {
+        console.warn('Unable to detach WhatsApp window opener:', openerError);
+      }
+    }
+
     submitBtn.disabled = true;
     submitBtn.innerHTML = `<span>Enregistrement...</span> <i class="fa-solid fa-spinner fa-spin"></i>`;
     notice.textContent = 'Enregistrement de votre demande en cours...';
     notice.className = 'form-notice';
 
-    // Step 1: Remote Persistence via Supabase BaaS
+    // Step 2: Remote Persistence via Supabase BaaS
     let persistenceSuccessful = false;
     if (supabaseClient) {
       try {
@@ -149,8 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
             email: email,
             phone: phone.length > 0 ? phone : null,
             need: type,
-            message: message,
-            created_at: new Date().toISOString()
+            message: message
           }
         ]);
         if (!error) {
@@ -163,29 +185,25 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // Step 2: Build URL-encoded WhatsApp Dispatch Payload
-    const waText = encodeURIComponent(
-      `Bonjour Hicham,\n\n` +
-      `Je vous contacte depuis votre portfolio :\n` +
-      `• Nom : ${name}\n` +
-      `• Email : ${email}\n` +
-      `• Téléphone : ${phone.length > 0 ? phone : 'Non renseigné'}\n` +
-      `• Besoin : ${type}\n\n` +
-      `Détails de ma demande :\n${message}`
-    );
-
-    notice.textContent = persistenceSuccessful 
-      ? 'Demande enregistrée avec succès ! Redirection WhatsApp...' 
-      : 'Redirection vers WhatsApp pour envoyer votre message...';
+    form.reset();
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = `<span>Envoyer ma demande</span> <i class="fa-solid fa-arrow-right"></i>`;
     notice.className = 'form-notice success';
 
-    // Step 3: Dispatch WhatsApp Intent & Reset Form
-    setTimeout(() => {
-      window.open(`https://wa.me/${WHATSAPP_PHONE_NUMBER}?text=${waText}`, '_blank');
-      form.reset();
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = `<span>Envoyer ma demande</span> <i class="fa-solid fa-arrow-right"></i>`;
-      notice.textContent = `Message transmis ! Vous pouvez également me joindre directement à ${CONTACT_EMAIL}.`;
-    }, 600);
+    // Guard: popup blocked → navigate the current tab to WhatsApp as a fallback
+    if (!waWindow) {
+      notice.textContent = 'Redirection vers WhatsApp pour envoyer votre message...';
+      window.location.href = waUrl;
+      return;
+    }
+
+    notice.textContent = persistenceSuccessful
+      ? `Demande enregistrée ! Finalisez l'envoi dans WhatsApp, ou écrivez-moi à ${CONTACT_EMAIL}.`
+      : `Finalisez l'envoi dans WhatsApp, ou écrivez-moi directement à ${CONTACT_EMAIL}.`;
   });
 });
+
+// 6. Node export for the test suite
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { isValidEmail, sanitizeInput, buildWhatsAppText };
+}

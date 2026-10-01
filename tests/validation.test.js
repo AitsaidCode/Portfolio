@@ -4,50 +4,25 @@
 const assert = require('assert');
 const path = require('path');
 
-// 1. Logic implementations under test
-function isValidEmail(email) {
-  if (typeof email !== 'string') return false;
-  const sanitized = email.trim();
-  if (sanitized.length === 0 || sanitized.length > 254) return false;
-  const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
-  return emailRegex.test(sanitized);
-}
+// 1. Production implementations under test
+const { isValidEmail, sanitizeInput, buildWhatsAppText } = require('../main.js');
+const { resolveSafePath } = require('../server.js');
 
-function sanitizeInput(value) {
-  if (typeof value !== 'string') return '';
-  return value.trim().replace(/[<>]/g, '');
-}
-
+// Mirrors the submit handler: sanitize, guard, then encode
 function buildWhatsAppPayload(name, email, phone, type, message) {
-  const sName = sanitizeInput(name);
-  const sEmail = sanitizeInput(email);
-  const sPhone = sanitizeInput(phone);
-  const sType = sanitizeInput(type);
-  const sMessage = sanitizeInput(message);
+  const fields = {
+    name: sanitizeInput(name),
+    email: sanitizeInput(email),
+    phone: sanitizeInput(phone),
+    type: sanitizeInput(type),
+    message: sanitizeInput(message)
+  };
 
-  if (sName.length < 2) throw new Error('Invalid name');
-  if (!isValidEmail(sEmail)) throw new Error('Invalid email');
-  if (sMessage.length < 10) throw new Error('Invalid message');
+  if (fields.name.length < 2) throw new Error('Invalid name');
+  if (!isValidEmail(fields.email)) throw new Error('Invalid email');
+  if (fields.message.length < 10) throw new Error('Invalid message');
 
-  const text = 
-    `Bonjour Hicham,\n\n` +
-    `Je vous contacte depuis votre portfolio :\n` +
-    `• Nom : ${sName}\n` +
-    `• Email : ${sEmail}\n` +
-    `• Téléphone : ${sPhone.length > 0 ? sPhone : 'Non renseigné'}\n` +
-    `• Besoin : ${sType}\n\n` +
-    `Détails de ma demande :\n${sMessage}`;
-
-  return encodeURIComponent(text);
-}
-
-function validatePathTraversal(requestedUrl, rootDir) {
-  let safePath = path.normalize(decodeURI(requestedUrl.split('?')[0])).replace(/^(\.\.[\/\\])+/, '');
-  if (safePath === '/' || safePath === '') {
-    safePath = '/index.html';
-  }
-  const resolved = path.join(rootDir, safePath);
-  return resolved.startsWith(rootDir);
+  return encodeURIComponent(buildWhatsAppText(fields));
 }
 
 // 2. Test Execution
@@ -101,10 +76,18 @@ console.log('✓ Guard clause rejection tests passed.');
 
 // Test Case 5: Path Traversal Defenses
 const mockRootDir = '/var/www/devsurmesure';
-assert.strictEqual(validatePathTraversal('/index.html', mockRootDir), true, 'Standard route allowed');
-assert.strictEqual(validatePathTraversal('/assets/style.css', mockRootDir), true, 'Subdirectory asset allowed');
-assert.strictEqual(validatePathTraversal('/../../../etc/passwd', mockRootDir), true, 'Path traversal neutralized within root');
+assert.strictEqual(resolveSafePath('/', mockRootDir), path.join(mockRootDir, 'index.html'), 'Root should map to index.html');
+assert.strictEqual(resolveSafePath('/assets/hicham.jpg', mockRootDir), path.join(mockRootDir, 'assets/hicham.jpg'), 'Subdirectory asset allowed');
+assert.strictEqual(resolveSafePath('/../../../etc/passwd', mockRootDir), path.join(mockRootDir, 'etc/passwd'), 'Traversal must stay within root');
+assert.strictEqual(resolveSafePath('/%2e%2e/%2e%2e/etc/passwd', mockRootDir).startsWith(mockRootDir + path.sep), true, 'Encoded traversal must stay within root');
+assert.strictEqual(resolveSafePath('/%E0%A4%A', mockRootDir), null, 'Malformed URI must be rejected, not throw');
+assert.strictEqual(resolveSafePath('/index.html%00.png', mockRootDir), null, 'Null byte must be rejected');
+assert.strictEqual(resolveSafePath(undefined, mockRootDir), null, 'Non-string path must be rejected');
 console.log('✓ Path traversal prevention tests passed.');
+
+// Test Case 6: WhatsApp phone fallback
+assert.ok(buildWhatsAppText({ name: 'Ana', email: 'a@b.fr', phone: '', type: 'Site', message: 'Bonjour test' }).includes('Non renseigné'), 'Empty phone fallback missing');
+console.log('✓ WhatsApp message builder tests passed.');
 
 console.log('====================================================');
 console.log('ALL EXTENDED SECURITY & VALIDATION TESTS PASSED (100%).');

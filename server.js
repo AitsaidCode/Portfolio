@@ -34,6 +34,28 @@ const SECURITY_HEADERS = {
   'Permissions-Policy': 'camera=(), microphone=(), geolocation=(), payment=()'
 };
 
+// Resolves a request path to a file inside rootDir; null when malformed or outside the root
+function resolveSafePath(urlPath, rootDir) {
+  if (typeof urlPath !== 'string') return null;
+  let decoded;
+  try {
+    decoded = decodeURI(urlPath);
+  } catch (decodeError) {
+    return null;
+  }
+  if (decoded.includes('\0')) return null;
+
+  let safePath = path.normalize(decoded).replace(/^(\.\.[\/\\])+/, '');
+  if (safePath === '/' || safePath === '' || safePath === '.') {
+    safePath = '/index.html';
+  }
+
+  const root = path.resolve(rootDir);
+  const filePath = path.join(root, safePath);
+  if (filePath !== root && !filePath.startsWith(root + path.sep)) return null;
+  return filePath;
+}
+
 const server = http.createServer((req, res) => {
   // 1. Guard: Restrict HTTP methods to GET & HEAD
   if (req.method !== 'GET' && req.method !== 'HEAD') {
@@ -58,21 +80,14 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  // 3. Parse URL & prevent path traversal
-  let safePath = path.normalize(decodeURI(urlPath)).replace(/^(\.\.[\/\\])+/, '');
-  if (safePath === '/' || safePath === '') {
-    safePath = '/index.html';
-  }
-
-  const filePath = path.join(ROOT_DIR, safePath);
-
-  // Security guard: Ensure path strictly stays within ROOT_DIR
-  if (!filePath.startsWith(ROOT_DIR)) {
-    res.writeHead(403, { 
+  // 3. Parse URL & prevent path traversal / malformed encodings
+  const filePath = resolveSafePath(urlPath, ROOT_DIR);
+  if (filePath === null) {
+    res.writeHead(400, {
       'Content-Type': 'text/plain; charset=utf-8',
-      ...SECURITY_HEADERS 
+      ...SECURITY_HEADERS
     });
-    res.end('403 Forbidden');
+    res.end('400 Bad Request');
     return;
   }
 
@@ -106,24 +121,28 @@ const server = http.createServer((req, res) => {
   });
 });
 
-server.listen(PORT, '127.0.0.1', () => {
-  console.log(`[devsurmesure] Local server running at http://localhost:${PORT}/`);
-  console.log(`[devsurmesure] Serving directory: ${ROOT_DIR}`);
-});
-
-// Graceful Shutdown handling
-function handleShutdown(signal) {
-  console.log(`[devsurmesure] Received ${signal}. Closing HTTP server gracefully...`);
-  server.close(() => {
-    console.log('[devsurmesure] HTTP server closed cleanly. Process exiting.');
-    process.exit(0);
+if (require.main === module) {
+  server.listen(PORT, '127.0.0.1', () => {
+    console.log(`[devsurmesure] Local server running at http://localhost:${PORT}/`);
+    console.log(`[devsurmesure] Serving directory: ${ROOT_DIR}`);
   });
-  // Force exit if hanging connections remain
-  setTimeout(() => {
-    console.error('[devsurmesure] Forced shutdown after timeout.');
-    process.exit(1);
-  }, 5000).unref();
+
+  // Graceful Shutdown handling
+  function handleShutdown(signal) {
+    console.log(`[devsurmesure] Received ${signal}. Closing HTTP server gracefully...`);
+    server.close(() => {
+      console.log('[devsurmesure] HTTP server closed cleanly. Process exiting.');
+      process.exit(0);
+    });
+    // Force exit if hanging connections remain
+    setTimeout(() => {
+      console.error('[devsurmesure] Forced shutdown after timeout.');
+      process.exit(1);
+    }, 5000).unref();
+  }
+
+  process.on('SIGTERM', () => handleShutdown('SIGTERM'));
+  process.on('SIGINT', () => handleShutdown('SIGINT'));
 }
 
-process.on('SIGTERM', () => handleShutdown('SIGTERM'));
-process.on('SIGINT', () => handleShutdown('SIGINT'));
+module.exports = { resolveSafePath };
