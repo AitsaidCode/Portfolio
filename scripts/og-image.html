@@ -1,0 +1,85 @@
+<!doctype html>
+<!-- Source of assets/og-image.png (1200x630). Re-render with a headless browser after edits. -->
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;800&family=Playfair+Display:ital,wght@1,600&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1200px;
+    height: 630px;
+    background: #FBF9F4;
+    font-family: 'Inter', sans-serif;
+    color: #1A1714;
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    align-items: center;
+    gap: 56px;
+    padding: 0 72px;
+    position: relative;
+    overflow: hidden;
+  }
+  body::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 14px;
+    background: #B0552F;
+  }
+  .kicker {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px;
+    letter-spacing: 0.14em;
+    color: #B0552F;
+    margin-bottom: 26px;
+  }
+  h1 {
+    font-size: 66px;
+    font-weight: 800;
+    line-height: 1.04;
+    letter-spacing: -0.03em;
+  }
+  h1 em {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    color: #B0552F;
+  }
+  .sub {
+    margin-top: 28px;
+    font-size: 26px;
+    font-weight: 600;
+    color: #6B6358;
+  }
+  .domain {
+    margin-top: 38px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 22px;
+    padding: 12px 22px;
+    border-radius: 999px;
+    background: #171821;
+    color: #FBF9F4;
+  }
+  .dot { width: 12px; height: 12px; border-radius: 50%; background: #47AB19; }
+  .photo {
+    width: 420px;
+    height: 470px;
+    border-radius: 28px;
+    background: url('../assets/hicham.jpg') center / cover;
+    box-shadow: 0 30px 60px -20px rgba(26, 23, 20, 0.35);
+  }
+</style>
+</head>
+<body>
+  <div>
+    <div class="kicker">HICHAM AITSAID · PARIS</div>
+    <h1>Ingénieur logiciel<br />&amp; <em>Health-Tech.</em></h1>
+    <p class="sub">Sites, applications web &amp; dépannage sécurisé</p>
+    <div class="domain"><span class="dot"></span>devsurmesure.com</div>
+  </div>
+  <div class="photo"></div>
+</body>
+</html>

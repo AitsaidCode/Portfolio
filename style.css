@@ -1576,3 +1576,336 @@ img {
     font-size: 1.2rem;
   }
 }
+
+/* ==========================================================================
+   10. ACCESSIBILITY HELPERS
+   ========================================================================== */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 100;
+  padding: 10px 18px;
+  border-radius: var(--radius-sm);
+  background: var(--text-ink);
+  color: var(--text-light);
+  font-weight: 600;
+  text-decoration: none;
+  transform: translateY(-160%);
+  transition: transform 0.2s;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+:focus-visible {
+  outline: 2px solid var(--terracotta);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.bg-paper-dark :focus-visible {
+  outline-color: #E8A27F;
+}
+
+/* ==========================================================================
+   11. NAV ACTIVE SECTION (scrollspy)
+   ========================================================================== */
+.nav-item.is-active {
+  background: #F2F0E9;
+  color: var(--terracotta);
+}
+
+.floating-nav-pill.theme-dark-nav .nav-item.is-active {
+  background: rgba(255, 255, 255, 0.1);
+  color: #E8A27F;
+}
+
+/* ==========================================================================
+   12. MOBILE MENU
+   ========================================================================== */
+.mobile-menu-btn {
+  cursor: pointer;
+  padding: 0;
+}
+
+.burger {
+  position: relative;
+  width: 18px;
+  height: 12px;
+  display: block;
+}
+
+.burger span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--text-ink);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), top 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.burger span:first-child { top: 1px; }
+.burger span:last-child { top: 9px; }
+
+.mobile-menu-btn[aria-expanded="true"] .burger span:first-child {
+  top: 5px;
+  transform: rotate(45deg);
+}
+
+.mobile-menu-btn[aria-expanded="true"] .burger span:last-child {
+  top: 5px;
+  transform: rotate(-45deg);
+}
+
+.mobile-menu {
+  position: fixed;
+  top: 69px;
+  left: 0;
+  right: 0;
+  z-index: 49;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 12px 20px 28px;
+  background: rgba(251, 249, 244, 0.98);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-light);
+  box-shadow: 0 24px 40px -20px rgba(26, 23, 20, 0.25);
+  animation: menuDrop 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mobile-menu[hidden] {
+  display: none;
+}
+
+@keyframes menuDrop {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.mobile-menu-links {
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-menu-links a {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 14px 4px;
+  border-bottom: 1px solid var(--border-light);
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-ink);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+
+.mobile-menu-links a span {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--terracotta);
+}
+
+.mobile-menu-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #2F7C12;
+}
+
+body.menu-open {
+  overflow: hidden;
+}
+
+@media (min-width: 821px) {
+  .mobile-menu { display: none !important; }
+}
+
+/* ==========================================================================
+   13. FAQ
+   ========================================================================== */
+.faq-layout {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 56px;
+  align-items: start;
+}
+
+.faq-layout .section-title-wrap {
+  position: sticky;
+  top: 120px;
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.faq-item {
+  background: var(--bg-white);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  transition: border-color 0.25s;
+}
+
+.faq-item[open] {
+  border-color: rgba(176, 85, 47, 0.35);
+}
+
+.faq-item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 22px;
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--font-heading);
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--text-ink);
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-icon {
+  position: relative;
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--terracotta-soft);
+}
+
+.faq-icon::before,
+.faq-icon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 11px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--terracotta);
+  transform: translate(-50%, -50%);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.faq-icon::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.faq-item[open] .faq-icon::after {
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+
+.faq-item p {
+  padding: 0 22px 22px;
+  color: var(--text-stone);
+  font-size: 0.98rem;
+  line-height: 1.7;
+}
+
+@media (max-width: 1024px) {
+  .faq-layout {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .faq-layout .section-title-wrap {
+    position: static;
+  }
+}
+
+@media (max-width: 480px) {
+  .faq-item summary {
+    padding: 18px 16px;
+    font-size: 0.97rem;
+  }
+  .faq-item p {
+    padding: 0 16px 18px;
+  }
+}
+
+/* ==========================================================================
+   14. FORM FIELD VALIDATION
+   ========================================================================== */
+.form-group input[aria-invalid="true"],
+.form-group textarea[aria-invalid="true"] {
+  border-color: #C53030;
+  background: #FFF8F7;
+}
+
+.field-error {
+  font-size: 0.8rem;
+  color: #C53030;
+  min-height: 0;
+}
+
+.field-error:empty {
+  display: none;
+}
+
+/* ==========================================================================
+   15. SCROLL REVEAL (only active when JS adds .js-reveal on <html>)
+   ========================================================================== */
+.js-reveal .reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--reveal-delay, 0s);
+}
+
+.js-reveal .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ==========================================================================
+   16. REDUCED MOTION
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .marquee-inner {
+    animation: none;
+  }
+  .js-reveal .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+#faq.content-section {
+  padding-bottom: 0;
+}

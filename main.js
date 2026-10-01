@@ -96,10 +96,95 @@ if (typeof document !== 'undefined') document.addEventListener('DOMContentLoaded
   window.addEventListener('resize', onScroll, { passive: true });
   evaluateNavTheme();
 
-  // 4.2. Contact Form Submission Engine with Strict Guard Clauses
+  // 4.2. Mobile Menu Sheet
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (menuBtn && mobileMenu) {
+    const setMenuOpen = (open) => {
+      menuBtn.setAttribute('aria-expanded', String(open));
+      menuBtn.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+      mobileMenu.hidden = !open;
+      document.body.classList.toggle('menu-open', open);
+    };
+    menuBtn.addEventListener('click', () => setMenuOpen(mobileMenu.hidden));
+    mobileMenu.addEventListener('click', (event) => {
+      if (event.target.closest('a')) setMenuOpen(false);
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key !== 'Escape' || mobileMenu.hidden) return;
+      setMenuOpen(false);
+      menuBtn.focus();
+    });
+    window.matchMedia('(min-width: 821px)').addEventListener('change', (mq) => {
+      if (mq.matches) setMenuOpen(false);
+    });
+  }
+
+  // 4.3. Scrollspy: highlight the nav link of the section in view
+  const navLinks = document.querySelectorAll('.nav-links .nav-item[href^="#"]');
+  if (navLinks.length > 0 && 'IntersectionObserver' in window) {
+    const linkById = new Map();
+    navLinks.forEach((link) => linkById.set(link.getAttribute('href').slice(1), link));
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const link = linkById.get(entry.target.id);
+        if (!link) return;
+        link.classList.toggle('is-active', entry.isIntersecting);
+        if (entry.isIntersecting) {
+          link.setAttribute('aria-current', 'true');
+        } else {
+          link.removeAttribute('aria-current');
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    linkById.forEach((_, id) => {
+      const section = document.getElementById(id);
+      if (section) spy.observe(section);
+    });
+  }
+
+  // 4.4. Scroll Reveal (skipped when the user prefers reduced motion)
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!prefersReducedMotion && 'IntersectionObserver' in window) {
+    const revealTargets = document.querySelectorAll(
+      '.section-title-wrap, .work-card, .bento-tile, .pricing-card, .bio-main-text, .bio-sidebar-card, .faq-item, .contact-box-surinder'
+    );
+    document.documentElement.classList.add('js-reveal');
+    const revealer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        revealer.unobserve(entry.target);
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    revealTargets.forEach((el) => {
+      const siblings = el.parentElement ? Array.from(el.parentElement.children).filter((c) => c.matches('.bento-tile, .pricing-card, .faq-item')) : [];
+      const index = siblings.indexOf(el);
+      if (index > 0) el.style.setProperty('--reveal-delay', `${Math.min(index, 5) * 0.08}s`);
+      el.classList.add('reveal');
+      revealer.observe(el);
+    });
+  }
+
+  // 4.5. Contact Form Submission Engine with Strict Guard Clauses
   if (!form || !notice || !submitBtn) {
     return;
   }
+
+  function setFieldError(input, message) {
+    if (!input) return;
+    const errorSlot = document.getElementById(`${input.id}-error`);
+    if (message) {
+      input.setAttribute('aria-invalid', 'true');
+    } else {
+      input.removeAttribute('aria-invalid');
+    }
+    if (errorSlot) errorSlot.textContent = message;
+  }
+
+  form.addEventListener('input', (event) => {
+    if (event.target.getAttribute('aria-invalid') === 'true') setFieldError(event.target, '');
+  });
 
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
@@ -122,27 +207,21 @@ if (typeof document !== 'undefined') document.addEventListener('DOMContentLoaded
     const type = sanitizeInput(typeSelect.value);
     const message = sanitizeInput(messageInput.value);
 
-    // Guard Clause 1: Name validation
-    if (name.length < 2) {
-      notice.textContent = 'Veuillez saisir un nom valide (au moins 2 caractères).';
-      notice.className = 'form-notice error';
-      nameInput.focus();
-      return;
-    }
+    // Guard Clause: validate every field, report all errors at once, focus the first
+    const fieldErrors = [
+      [nameInput, name.length < 2 ? 'Indiquez votre nom (au moins 2 caractères).' : ''],
+      [emailInput, !isValidEmail(email) ? 'Adresse email invalide (ex. nom@domaine.fr).' : ''],
+      [messageInput, message.length < 10 ? 'Décrivez votre besoin en quelques mots (au moins 10 caractères).' : '']
+    ];
+    fieldErrors.forEach(([input, error]) => setFieldError(input, error));
 
-    // Guard Clause 2: Email validation
-    if (!isValidEmail(email)) {
-      notice.textContent = 'Veuillez saisir une adresse email valide.';
+    const invalidFields = fieldErrors.filter(([, error]) => error);
+    if (invalidFields.length > 0) {
+      notice.textContent = invalidFields.length === 1
+        ? 'Merci de corriger le champ indiqué.'
+        : `Merci de corriger les ${invalidFields.length} champs indiqués.`;
       notice.className = 'form-notice error';
-      emailInput.focus();
-      return;
-    }
-
-    // Guard Clause 3: Message validation
-    if (message.length < 10) {
-      notice.textContent = 'Veuillez décrire votre besoin avec un peu plus de détails (au moins 10 caractères).';
-      notice.className = 'form-notice error';
-      messageInput.focus();
+      invalidFields[0][0].focus();
       return;
     }
 
@@ -158,7 +237,7 @@ if (typeof document !== 'undefined') document.addEventListener('DOMContentLoaded
     }
 
     submitBtn.disabled = true;
-    submitBtn.innerHTML = `<span>Enregistrement...</span> <i class="fa-solid fa-spinner fa-spin"></i>`;
+    submitBtn.innerHTML = `<span>Enregistrement...</span> <i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i>`;
     notice.textContent = 'Enregistrement de votre demande en cours...';
     notice.className = 'form-notice';
 
@@ -187,7 +266,7 @@ if (typeof document !== 'undefined') document.addEventListener('DOMContentLoaded
 
     form.reset();
     submitBtn.disabled = false;
-    submitBtn.innerHTML = `<span>Envoyer ma demande</span> <i class="fa-solid fa-arrow-right"></i>`;
+    submitBtn.innerHTML = `<span>Envoyer ma demande</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>`;
     notice.className = 'form-notice success';
 
     // Guard: popup blocked → navigate the current tab to WhatsApp as a fallback
